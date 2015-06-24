@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		CE9B35071B3B3951005507F4 /* mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CE9B350A1B3B3951005507F4 /* Build configuration list for PBXAggregateTarget "mogenerator" */;
+			buildPhases = (
+				CE9B350D1B3B395F005507F4 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = mogenerator;
+			productName = mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		B4907531A3084CA6BFF3117F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7247B2D797DDF3A00845BFE /* libPods.a */; };
 		CE9B34CD1B3B2E0F005507F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34CC1B3B2E0F005507F4 /* main.m */; };
@@ -17,6 +31,8 @@
 		CE9B34F21B3B2E7E005507F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9B34F01B3B2E7E005507F4 /* LaunchScreen.storyboard */; };
 		CE9B35051B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9B35031B3B3866005507F4 /* SZModel.xcdatamodeld */; };
 		CE9B35061B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9B35031B3B3866005507F4 /* SZModel.xcdatamodeld */; };
+		CE9B35101B3B3997005507F4 /* SZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B350F1B3B3997005507F4 /* SZModel.m */; };
+		CE9B35111B3B3997005507F4 /* SZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B350F1B3B3997005507F4 /* SZModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +42,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = CE9B34C61B3B2E0F005507F4;
 			remoteInfo = VKSampleApp;
+		};
+		CE9B350B1B3B395A005507F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE9B34BF1B3B2E0F005507F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE9B35071B3B3951005507F4;
+			remoteInfo = mogenerator;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -48,6 +71,8 @@
 		CE9B34F11B3B2E7E005507F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = VKSampleApp/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE9B34F41B3B2FAC005507F4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		CE9B35041B3B3866005507F4 /* vkModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = vkModel.xcdatamodel; sourceTree = "<group>"; };
+		CE9B350E1B3B3997005507F4 /* SZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZModel.h; path = CoreData/SZModel.h; sourceTree = SOURCE_ROOT; };
+		CE9B350F1B3B3997005507F4 /* SZModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZModel.m; path = CoreData/SZModel.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +209,8 @@
 		CE9B34F91B3B37BC005507F4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				CE9B350E1B3B3997005507F4 /* SZModel.h */,
+				CE9B350F1B3B3997005507F4 /* SZModel.m */,
 				CE9B35031B3B3866005507F4 /* SZModel.xcdatamodeld */,
 			);
 			name = CoreData;
@@ -205,6 +232,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CE9B350C1B3B395A005507F4 /* PBXTargetDependency */,
 			);
 			name = VKSampleApp;
 			productName = VKSampleApp;
@@ -246,6 +274,9 @@
 						CreatedOnToolsVersion = 6.3.2;
 						TestTargetID = CE9B34C61B3B2E0F005507F4;
 					};
+					CE9B35071B3B3951005507F4 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
 				};
 			};
 			buildConfigurationList = CE9B34C21B3B2E0F005507F4 /* Build configuration list for PBXProject "VKSampleApp" */;
@@ -261,6 +292,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				CE9B35071B3B3951005507F4 /* mogenerator */,
 				CE9B34C61B3B2E0F005507F4 /* VKSampleApp */,
 				CE9B34DF1B3B2E0F005507F4 /* VKSampleAppTests */,
 			);
@@ -303,6 +335,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		CE9B350D1B3B395F005507F4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=${PATH}:/usr/local/bin\nmogenerator --v2 -m ./CoreData/SZModel.xcdatamodeld --machine-dir ./CoreData/Machine --human-dir ./CoreData/Human --includeh ./CoreData/SZModel.h --includem ./CoreData/SZModel.m";
+		};
 		D6DA2DF4BD2FA3CBD7D618FC /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -328,6 +373,7 @@
 				CE9B34D31B3B2E0F005507F4 /* ViewController.m in Sources */,
 				CE9B34D01B3B2E0F005507F4 /* AppDelegate.m in Sources */,
 				CE9B35051B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */,
+				CE9B35101B3B3997005507F4 /* SZModel.m in Sources */,
 				CE9B34CD1B3B2E0F005507F4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE9B35111B3B3997005507F4 /* SZModel.m in Sources */,
 				CE9B35061B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */,
 				CE9B34E71B3B2E0F005507F4 /* VKSampleAppTests.m in Sources */,
 			);
@@ -348,6 +395,11 @@
 			isa = PBXTargetDependency;
 			target = CE9B34C61B3B2E0F005507F4 /* VKSampleApp */;
 			targetProxy = CE9B34E11B3B2E0F005507F4 /* PBXContainerItemProxy */;
+		};
+		CE9B350C1B3B395A005507F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE9B35071B3B3951005507F4 /* mogenerator */;
+			targetProxy = CE9B350B1B3B395A005507F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -375,7 +427,7 @@
 		CE9B34E81B3B2E0F005507F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -412,13 +464,14 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/CoreData/**";
 			};
 			name = Debug;
 		};
 		CE9B34E91B3B2E0F005507F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -448,6 +501,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/CoreData/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -512,6 +566,20 @@
 			};
 			name = Release;
 		};
+		CE9B35081B3B3951005507F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CE9B35091B3B3951005507F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -541,6 +609,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		CE9B350A1B3B3951005507F4 /* Build configuration list for PBXAggregateTarget "mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE9B35081B3B3951005507F4 /* Debug */,
+				CE9B35091B3B3951005507F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

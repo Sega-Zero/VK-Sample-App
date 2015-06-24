@@ -1,0 +1,8 @@
+#import "SZPhoto.m"
+#import "_SZPhoto.m"
+#import "SZPost.m"
+#import "_SZPost.m"
+#import "SZPost.m"
+#import "_SZPost.m"
+#import "SZUser.m"
+#import "_SZUser.m"

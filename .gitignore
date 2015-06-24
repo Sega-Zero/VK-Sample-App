@@ -8,3 +8,5 @@ Pods/
 xcuserdata
 *.xcuserstate
 xcshareddata
+Human/
+Machine/
