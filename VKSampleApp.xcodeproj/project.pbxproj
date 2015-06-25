@@ -24,7 +24,7 @@
 		B4907531A3084CA6BFF3117F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7247B2D797DDF3A00845BFE /* libPods.a */; };
 		CE9B34CD1B3B2E0F005507F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34CC1B3B2E0F005507F4 /* main.m */; };
 		CE9B34D01B3B2E0F005507F4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34CF1B3B2E0F005507F4 /* AppDelegate.m */; };
-		CE9B34D31B3B2E0F005507F4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34D21B3B2E0F005507F4 /* ViewController.m */; };
+		CE9B34D31B3B2E0F005507F4 /* SZNewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34D21B3B2E0F005507F4 /* SZNewsFeedViewController.m */; };
 		CE9B34D61B3B2E0F005507F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9B34D41B3B2E0F005507F4 /* Main.storyboard */; };
 		CE9B34D81B3B2E0F005507F4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9B34D71B3B2E0F005507F4 /* Images.xcassets */; };
 		CE9B34E71B3B2E0F005507F4 /* VKSampleAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34E61B3B2E0F005507F4 /* VKSampleAppTests.m */; };
@@ -33,6 +33,10 @@
 		CE9B35061B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9B35031B3B3866005507F4 /* SZModel.xcdatamodeld */; };
 		CE9B35101B3B3997005507F4 /* SZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B350F1B3B3997005507F4 /* SZModel.m */; };
 		CE9B35111B3B3997005507F4 /* SZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B350F1B3B3997005507F4 /* SZModel.m */; };
+		CE9B35511B3B4E9A005507F4 /* SZLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B35501B3B4E9A005507F4 /* SZLocalStorage.m */; };
+		CE9B35551B3B55CE005507F4 /* SZServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B35541B3B55CE005507F4 /* SZServerController.m */; };
+		CE9B35581B3BFAEE005507F4 /* SZImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B35571B3BFAEE005507F4 /* SZImageCache.m */; };
+		CE9B355B1B3C0FA3005507F4 /* SZImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B355A1B3C0FA3005507F4 /* SZImageLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,18 +65,26 @@
 		CE9B34CC1B3B2E0F005507F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE9B34CE1B3B2E0F005507F4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CE9B34CF1B3B2E0F005507F4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CE9B34D11B3B2E0F005507F4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CE9B34D21B3B2E0F005507F4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CE9B34D11B3B2E0F005507F4 /* SZNewsFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZNewsFeedViewController.h; sourceTree = "<group>"; };
+		CE9B34D21B3B2E0F005507F4 /* SZNewsFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZNewsFeedViewController.m; sourceTree = "<group>"; };
 		CE9B34D51B3B2E0F005507F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE9B34D71B3B2E0F005507F4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CE9B34E01B3B2E0F005507F4 /* VKSampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VKSampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9B34E51B3B2E0F005507F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE9B34E61B3B2E0F005507F4 /* VKSampleAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKSampleAppTests.m; sourceTree = "<group>"; };
 		CE9B34F11B3B2E7E005507F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = VKSampleApp/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CE9B34F41B3B2FAC005507F4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		CE9B34F41B3B2FAC005507F4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CE9B35041B3B3866005507F4 /* vkModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = vkModel.xcdatamodel; sourceTree = "<group>"; };
 		CE9B350E1B3B3997005507F4 /* SZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZModel.h; path = CoreData/SZModel.h; sourceTree = SOURCE_ROOT; };
 		CE9B350F1B3B3997005507F4 /* SZModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZModel.m; path = CoreData/SZModel.m; sourceTree = SOURCE_ROOT; };
+		CE9B354F1B3B4E9A005507F4 /* SZLocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZLocalStorage.h; path = Models/SZLocalStorage.h; sourceTree = "<group>"; };
+		CE9B35501B3B4E9A005507F4 /* SZLocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZLocalStorage.m; path = Models/SZLocalStorage.m; sourceTree = "<group>"; };
+		CE9B35531B3B55CE005507F4 /* SZServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZServerController.h; path = Controllers/SZServerController.h; sourceTree = "<group>"; };
+		CE9B35541B3B55CE005507F4 /* SZServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZServerController.m; path = Controllers/SZServerController.m; sourceTree = "<group>"; };
+		CE9B35561B3BFAEE005507F4 /* SZImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZImageCache.h; path = Models/SZImageCache.h; sourceTree = "<group>"; };
+		CE9B35571B3BFAEE005507F4 /* SZImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZImageCache.m; path = Models/SZImageCache.m; sourceTree = "<group>"; };
+		CE9B35591B3C0FA3005507F4 /* SZImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZImageLoader.h; path = Controllers/SZImageLoader.h; sourceTree = "<group>"; };
+		CE9B355A1B3C0FA3005507F4 /* SZImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZImageLoader.m; path = Controllers/SZImageLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +147,7 @@
 		CE9B34C91B3B2E0F005507F4 /* VKSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE9B354D1B3B4BDF005507F4 /* Classes */,
 				CE9B34F71B3B3780005507F4 /* Controllers */,
 				CE9B34F61B3B3779005507F4 /* Models */,
 				CE9B34CE1B3B2E0F005507F4 /* AppDelegate.h */,
@@ -185,6 +198,10 @@
 			isa = PBXGroup;
 			children = (
 				CE9B34F91B3B37BC005507F4 /* CoreData */,
+				CE9B354F1B3B4E9A005507F4 /* SZLocalStorage.h */,
+				CE9B35501B3B4E9A005507F4 /* SZLocalStorage.m */,
+				CE9B35561B3BFAEE005507F4 /* SZImageCache.h */,
+				CE9B35571B3BFAEE005507F4 /* SZImageCache.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -192,7 +209,10 @@
 		CE9B34F71B3B3780005507F4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE9B354C1B3B4B86005507F4 /* VK */,
 				CE9B34F81B3B3791005507F4 /* UI */,
+				CE9B35591B3C0FA3005507F4 /* SZImageLoader.h */,
+				CE9B355A1B3C0FA3005507F4 /* SZImageLoader.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -200,8 +220,8 @@
 		CE9B34F81B3B3791005507F4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CE9B34D11B3B2E0F005507F4 /* ViewController.h */,
-				CE9B34D21B3B2E0F005507F4 /* ViewController.m */,
+				CE9B34D11B3B2E0F005507F4 /* SZNewsFeedViewController.h */,
+				CE9B34D21B3B2E0F005507F4 /* SZNewsFeedViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -214,6 +234,30 @@
 				CE9B35031B3B3866005507F4 /* SZModel.xcdatamodeld */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		CE9B354C1B3B4B86005507F4 /* VK */ = {
+			isa = PBXGroup;
+			children = (
+				CE9B35531B3B55CE005507F4 /* SZServerController.h */,
+				CE9B35541B3B55CE005507F4 /* SZServerController.m */,
+			);
+			name = VK;
+			sourceTree = "<group>";
+		};
+		CE9B354D1B3B4BDF005507F4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CE9B354E1B3B4BE6005507F4 /* Categories */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		CE9B354E1B3B4BE6005507F4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,9 +414,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE9B34D31B3B2E0F005507F4 /* ViewController.m in Sources */,
+				CE9B35511B3B4E9A005507F4 /* SZLocalStorage.m in Sources */,
+				CE9B35551B3B55CE005507F4 /* SZServerController.m in Sources */,
+				CE9B355B1B3C0FA3005507F4 /* SZImageLoader.m in Sources */,
+				CE9B34D31B3B2E0F005507F4 /* SZNewsFeedViewController.m in Sources */,
 				CE9B34D01B3B2E0F005507F4 /* AppDelegate.m in Sources */,
 				CE9B35051B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */,
+				CE9B35581B3BFAEE005507F4 /* SZImageCache.m in Sources */,
 				CE9B35101B3B3997005507F4 /* SZModel.m in Sources */,
 				CE9B34CD1B3B2E0F005507F4 /* main.m in Sources */,
 			);
@@ -460,7 +508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -498,7 +546,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/CoreData/**";
@@ -617,6 +665,7 @@
 				CE9B35091B3B3951005507F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

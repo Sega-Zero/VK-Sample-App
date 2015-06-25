@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
-@interface ViewController : UIViewController
+@interface SZNewsFeedViewController : UITableViewController
 
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 

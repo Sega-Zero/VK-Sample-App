@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Сергей Галездинов. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SZNewsFeedViewController.h"
 
-@interface ViewController ()
+@interface SZNewsFeedViewController ()<UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate>
 
 @end
 
-@implementation ViewController
+@implementation SZNewsFeedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
