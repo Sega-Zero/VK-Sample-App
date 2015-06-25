@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lgc-y6-Zwu">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="xB1-mQ-YTR">
+            <objects>
+                <viewController id="lgc-y6-Zwu" customClass="SZLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q0F-xK-r9f"/>
+                        <viewControllerLayoutGuide type="bottom" id="gAh-g3-d3c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W1z-PE-4UO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLo-hM-Ru7" userLabel="spacer view">
+                                <rect key="frame" x="260" y="196" width="80" height="207"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ryS-LR-W3h" userLabel="logo">
+                                        <rect key="frame" x="8" y="5" width="64" height="64"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2p-I4-qfI">
+                                        <rect key="frame" x="5" y="169" width="70" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="Orw-12-VkL"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="rlj-eP-JJ5"/>
+                                        </constraints>
+                                        <state key="normal" title="Login" backgroundImage="VK Button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="lgc-y6-Zwu" eventType="touchUpInside" id="lQu-yd-YIu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="U2p-I4-qfI" firstAttribute="top" secondItem="ryS-LR-W3h" secondAttribute="bottom" constant="100" id="5Qd-62-caM"/>
+                                    <constraint firstAttribute="trailing" secondItem="U2p-I4-qfI" secondAttribute="trailing" constant="5" id="Brb-Iy-VjX"/>
+                                    <constraint firstItem="U2p-I4-qfI" firstAttribute="leading" secondItem="vLo-hM-Ru7" secondAttribute="leading" constant="5" id="F0B-cD-byA"/>
+                                    <constraint firstAttribute="bottom" secondItem="U2p-I4-qfI" secondAttribute="bottom" constant="5" id="NbA-pN-p3i"/>
+                                    <constraint firstItem="ryS-LR-W3h" firstAttribute="top" secondItem="vLo-hM-Ru7" secondAttribute="top" constant="5" id="n5Z-Kk-kuD"/>
+                                    <constraint firstAttribute="centerX" secondItem="ryS-LR-W3h" secondAttribute="centerX" id="oVI-Rd-7YY"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press &quot;Login&quot; button to sign in." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqC-9H-xBD">
+                                <rect key="frame" x="206" y="411" width="188" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="pXh-io-bb4" userLabel="spinner">
+                                <rect key="frame" x="348" y="371" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.30588235294117649" green="0.45882352941176469" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="vLo-hM-Ru7" secondAttribute="centerY" id="5xw-Cd-KBB"/>
+                            <constraint firstItem="U2p-I4-qfI" firstAttribute="centerY" secondItem="pXh-io-bb4" secondAttribute="centerY" id="D1E-sq-9n2"/>
+                            <constraint firstItem="pXh-io-bb4" firstAttribute="leading" secondItem="U2p-I4-qfI" secondAttribute="trailing" constant="13" id="I55-Gs-eDq"/>
+                            <constraint firstAttribute="centerX" secondItem="vLo-hM-Ru7" secondAttribute="centerX" id="MyV-xJ-XpB"/>
+                            <constraint firstItem="CqC-9H-xBD" firstAttribute="top" secondItem="U2p-I4-qfI" secondAttribute="bottom" constant="13" id="R3R-bW-3d1"/>
+                            <constraint firstItem="CqC-9H-xBD" firstAttribute="centerX" secondItem="vLo-hM-Ru7" secondAttribute="centerX" id="mtV-WL-6va"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginSpinner" destination="pXh-io-bb4" id="eBl-2b-Apn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V8M-CG-9ag" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="703" y="410"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="VK Button" width="9" height="33"/>
+        <image name="logo" width="64" height="64"/>
+    </resources>
+</document>

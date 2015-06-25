@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreData/CoreData.h>
+#import "SZServerController.h"
+#import "SZLocalStorage.h"
 
 @interface SZNewsFeedViewController : UITableViewController
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (weak) SZServerController *serverController;
+@property (weak) SZLocalStorage *localStorage;
 
 @end
 

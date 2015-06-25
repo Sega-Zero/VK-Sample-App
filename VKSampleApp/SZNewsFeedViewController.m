@@ -7,6 +7,7 @@
 //
 
 #import "SZNewsFeedViewController.h"
+#import <PSTAlertController.h>
 
 @interface SZNewsFeedViewController ()<UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate>
 
@@ -16,6 +17,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (IBAction)logoutPressed:(id)sender {
+    PSTAlertController *logoutSheet = [PSTAlertController actionSheetWithTitle:nil];
+    [logoutSheet addAction:[PSTAlertAction actionWithTitle:NSLocalizedString(@"Logout", "logout action item title")
+                                                     style:PSTAlertActionStyleDestructive
+                                                   handler:^(PSTAlertAction *action) {
+        [self.serverController logOut];
+    }]];
+
+    [logoutSheet addCancelActionWithHandler:nil];
+    [logoutSheet showWithSender:self controller:self animated:YES completion:nil];
 }
 
 @end

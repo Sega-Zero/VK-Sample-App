@@ -37,6 +37,8 @@
 		CE9B35551B3B55CE005507F4 /* SZServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B35541B3B55CE005507F4 /* SZServerController.m */; };
 		CE9B35581B3BFAEE005507F4 /* SZImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B35571B3BFAEE005507F4 /* SZImageCache.m */; };
 		CE9B355B1B3C0FA3005507F4 /* SZImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B355A1B3C0FA3005507F4 /* SZImageLoader.m */; };
+		CEB9D1361B3C1A580052D5FC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB9D1341B3C1A580052D5FC /* Login.storyboard */; };
+		CEB9D1391B3C34B50052D5FC /* SZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9D1381B3C34B50052D5FC /* SZLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,10 @@
 		CE9B35571B3BFAEE005507F4 /* SZImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZImageCache.m; path = Models/SZImageCache.m; sourceTree = "<group>"; };
 		CE9B35591B3C0FA3005507F4 /* SZImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZImageLoader.h; path = Controllers/SZImageLoader.h; sourceTree = "<group>"; };
 		CE9B355A1B3C0FA3005507F4 /* SZImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZImageLoader.m; path = Controllers/SZImageLoader.m; sourceTree = "<group>"; };
+		CEB9D1351B3C1A580052D5FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		CEB9D1371B3C34B50052D5FC /* SZLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLoginViewController.h; sourceTree = "<group>"; };
+		CEB9D1381B3C34B50052D5FC /* SZLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLoginViewController.m; sourceTree = "<group>"; };
+		CEB9D13B1B3C4EDC0052D5FC /* VKSampleApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VKSampleApp-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,7 @@
 		CE9B34CA1B3B2E0F005507F4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CEB9D13B1B3C4EDC0052D5FC /* VKSampleApp-Prefix.pch */,
 				CE9B34CB1B3B2E0F005507F4 /* Info.plist */,
 				CE9B34CC1B3B2E0F005507F4 /* main.m */,
 			);
@@ -190,6 +197,7 @@
 				CE9B34D71B3B2E0F005507F4 /* Images.xcassets */,
 				CE9B34F01B3B2E7E005507F4 /* LaunchScreen.storyboard */,
 				CE9B34D41B3B2E0F005507F4 /* Main.storyboard */,
+				CEB9D1341B3C1A580052D5FC /* Login.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -222,6 +230,8 @@
 			children = (
 				CE9B34D11B3B2E0F005507F4 /* SZNewsFeedViewController.h */,
 				CE9B34D21B3B2E0F005507F4 /* SZNewsFeedViewController.m */,
+				CEB9D1371B3C34B50052D5FC /* SZLoginViewController.h */,
+				CEB9D1381B3C34B50052D5FC /* SZLoginViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -348,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB9D1361B3C1A580052D5FC /* Login.storyboard in Resources */,
 				CE9B34F21B3B2E7E005507F4 /* LaunchScreen.storyboard in Resources */,
 				CE9B34D61B3B2E0F005507F4 /* Main.storyboard in Resources */,
 				CE9B34D81B3B2E0F005507F4 /* Images.xcassets in Resources */,
@@ -423,6 +434,7 @@
 				CE9B35581B3BFAEE005507F4 /* SZImageCache.m in Sources */,
 				CE9B35101B3B3997005507F4 /* SZModel.m in Sources */,
 				CE9B34CD1B3B2E0F005507F4 /* main.m in Sources */,
+				CEB9D1391B3C34B50052D5FC /* SZLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +479,14 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		CEB9D1341B3C1A580052D5FC /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEB9D1351B3C1A580052D5FC /* Base */,
+			);
+			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -560,6 +580,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = "VKSampleApp/VKSampleApp-Prefix.pch";
 				INFOPLIST_FILE = VKSampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -573,6 +594,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = "VKSampleApp/VKSampleApp-Prefix.pch";
 				INFOPLIST_FILE = VKSampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

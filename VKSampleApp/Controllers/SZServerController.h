@@ -24,23 +24,24 @@
 @property (readonly) BOOL isUserLoggedIn;
 
 /**
- Validate user credentials on server
+ Sign in to vk server via installed app or webbrowser instance
  @param
- user user email
- @param
- password user password
- @param
- successBlock block to be called on successfull validation
+ successBlock block to be called on success
  @param
  failure block to be called when error occurs: invalid credentials, no internet connection etc.
 
  */
-- (void)loginWith:(NSString*)user password:(NSString*)password success:(dispatch_block_t)successBlock failure:(void(^)(NSError *error))failure;
+- (void)loginWithSuccess:(dispatch_block_t)successBlock failure:(void(^)(NSError *error))failure;
 
 /**
  Perform user logout. After succesfull completion, `userDidLogout` delegate method will be called.
  */
 - (void)logOut;
+
+/**
+ Method to process openURL from vk app
+ */
+-(BOOL) processOpenURL:(NSURL*)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 
 //TODO: implement feed request
 @end

@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--News Feed View Controller-->
         <scene sceneID="0la-NE-xus">
             <objects>
-                <tableViewController id="BeG-uj-V5w" sceneMemberID="viewController">
+                <tableViewController id="BeG-uj-V5w" customClass="SZNewsFeedViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eV2-JO-R1M">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ypW-vj-1cP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Fos-YX-JCH"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Fos-YX-JCH">
+                            <connections>
+                                <action selector="logoutPressed:" destination="BeG-uj-V5w" id="jf2-XP-TuN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>

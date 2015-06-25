@@ -1,0 +1,15 @@
+//
+//  VKSampleApp-Prefix.pch
+//  VKSampleApp
+//
+//  Created by Сергей Галездинов on 25.06.15.
+//  Copyright (c) 2015 Сергей Галездинов. All rights reserved.
+//
+
+#ifndef VKSampleApp_VKSampleApp_Prefix_pch
+#define VKSampleApp_VKSampleApp_Prefix_pch
+
+#import <CocoaLumberjack.h>
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+
+#endif
