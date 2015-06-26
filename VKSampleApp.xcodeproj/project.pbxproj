@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		B4907531A3084CA6BFF3117F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7247B2D797DDF3A00845BFE /* libPods.a */; };
+		CE7334361B3D397000F60735 /* SZVKTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7334351B3D397000F60735 /* SZVKTransformers.m */; };
+		CE7334371B3D397000F60735 /* SZVKTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7334351B3D397000F60735 /* SZVKTransformers.m */; };
 		CE9B34CD1B3B2E0F005507F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34CC1B3B2E0F005507F4 /* main.m */; };
 		CE9B34D01B3B2E0F005507F4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34CF1B3B2E0F005507F4 /* AppDelegate.m */; };
 		CE9B34D31B3B2E0F005507F4 /* SZNewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34D21B3B2E0F005507F4 /* SZNewsFeedViewController.m */; };
@@ -62,6 +64,8 @@
 		18CF48A7C269C00E7876C181 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9186A775E2C713F4087BB117 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B7247B2D797DDF3A00845BFE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7334341B3D397000F60735 /* SZVKTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZVKTransformers.h; path = Classes/SZVKTransformers.h; sourceTree = "<group>"; };
+		CE7334351B3D397000F60735 /* SZVKTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZVKTransformers.m; path = Classes/SZVKTransformers.m; sourceTree = "<group>"; };
 		CE9B34C71B3B2E0F005507F4 /* VKSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9B34CB1B3B2E0F005507F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE9B34CC1B3B2E0F005507F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 			isa = PBXGroup;
 			children = (
 				CE9B354E1B3B4BE6005507F4 /* Categories */,
+				CE7334341B3D397000F60735 /* SZVKTransformers.h */,
+				CE7334351B3D397000F60735 /* SZVKTransformers.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -431,6 +437,7 @@
 				CE9B34D31B3B2E0F005507F4 /* SZNewsFeedViewController.m in Sources */,
 				CE9B34D01B3B2E0F005507F4 /* AppDelegate.m in Sources */,
 				CE9B35051B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */,
+				CE7334361B3D397000F60735 /* SZVKTransformers.m in Sources */,
 				CE9B35581B3BFAEE005507F4 /* SZImageCache.m in Sources */,
 				CE9B35101B3B3997005507F4 /* SZModel.m in Sources */,
 				CE9B34CD1B3B2E0F005507F4 /* main.m in Sources */,
@@ -444,6 +451,7 @@
 			files = (
 				CE9B35111B3B3997005507F4 /* SZModel.m in Sources */,
 				CE9B35061B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */,
+				CE7334371B3D397000F60735 /* SZVKTransformers.m in Sources */,
 				CE9B34E71B3B2E0F005507F4 /* VKSampleAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -47,6 +47,7 @@
     _serverController.delegate = self;
 
     [self switchStoryBoardTo:_serverController.isUserLoggedIn ? @"Main" : @"Login"];
+    [self ensureDatabaseIsNotEmpty];
 
     return YES;
 }
@@ -78,6 +79,16 @@
     }
 }
 
+- (void)ensureDatabaseIsNotEmpty {
+    if ([_localStorage isEmpty]) {
+        [_serverController fetchNewsFeedFrom:nil dataHandler:^(NSError *error, NSArray *users, NSDictionary *postsMap) {
+            if (!error) {
+                [_localStorage addPosts:postsMap fromUsers:users completionHandler:nil];
+            }
+        }];
+    }
+}
+
 #pragma mark servercontroller delegate
 
 -(void)userDidLogout {
@@ -89,6 +100,7 @@
 
 -(void)startLoginProcessWithCompletionHandler:(void (^)(NSError *))completionHandler {
     [_serverController loginWithSuccess:^{
+        [self ensureDatabaseIsNotEmpty];
         completionHandler(nil);
         [self switchStoryBoardTo:@"Main"];
     } failure:^(NSError *error) {

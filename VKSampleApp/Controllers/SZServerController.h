@@ -14,6 +14,8 @@
 
 @end
 
+typedef void(^SZVKDataRequestBlock)(NSError *error, NSArray *users, NSDictionary *postsMap);
+
 /**
  Wrapper for VK API requests and login state
  */
@@ -41,7 +43,27 @@
 /**
  Method to process openURL from vk app
  */
--(BOOL) processOpenURL:(NSURL*)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
+- (BOOL)processOpenURL:(NSURL*)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 
-//TODO: implement feed request
+/**
+ Request new newsfeed data from server since specified date.
+ @param
+ date request new posts before this date
+ @param
+ dataHandler block to be called on completion
+ @note
+ Passing nil to date parameter will request the last 50 posts from feed
+ */
+- (void)fetchNewsFeedSince:(NSDate*)date dataHandler:(SZVKDataRequestBlock)dataHandler;
+/**
+ Request previous newsfeed data from server until specified date.
+ @param
+ date request old posts until this date
+ @param
+ dataHandler block to be called on completion
+ @note
+ Passing nil to date parameter will request the last 50 posts from feed
+ */
+- (void)fetchNewsFeedFrom:(NSDate*)date dataHandler:(SZVKDataRequestBlock)dataHandler;
+
 @end

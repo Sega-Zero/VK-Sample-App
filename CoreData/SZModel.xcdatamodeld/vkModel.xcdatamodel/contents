@@ -4,13 +4,15 @@
         <relationship name="parentPost" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Post" inverseName="comments" inverseEntity="Post" syncable="YES"/>
     </entity>
     <entity name="Photo" representedClassName="SZPhoto" syncable="YES">
+        <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="photoURI" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnailURI" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Post" inverseName="photos" inverseEntity="Post" syncable="YES"/>
     </entity>
     <entity name="Post" representedClassName="SZPost" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="likesCount" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
         <attribute name="repostCount" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,13 +22,13 @@
     </entity>
     <entity name="User" representedClassName="SZUser" syncable="YES">
         <attribute name="avatarURI" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="posts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Post" inverseName="author" inverseEntity="Post" syncable="YES"/>
+        <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Post" inverseName="author" inverseEntity="Post" syncable="YES"/>
     </entity>
     <elements>
         <element name="Comment" positionX="-191" positionY="63" width="128" height="60"/>
-        <element name="Photo" positionX="-416" positionY="-180" width="128" height="90"/>
+        <element name="Photo" positionX="-416" positionY="-180" width="128" height="120"/>
         <element name="Post" positionX="-218" positionY="-180" width="128" height="165"/>
         <element name="User" positionX="-36" positionY="-177" width="128" height="105"/>
     </elements>

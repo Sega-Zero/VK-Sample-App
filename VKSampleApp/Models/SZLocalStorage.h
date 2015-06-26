@@ -30,6 +30,17 @@
  */
 - (void)removeAllRecords;
 
-//TODO: add users and feed
+- (BOOL)isEmpty;
+
+/**
+ Appends an array of vk posts into database
+ @param
+ postsMap dictionary containing map {userId = post}
+ @param
+ users array of vk users dictionaries
+ @param
+ completionHandler block to be called on completion
+ */
+- (void)addPosts:(NSDictionary*)postsMap fromUsers:(NSArray*)users completionHandler:(dispatch_block_t)completionHandler;
 
 @end
