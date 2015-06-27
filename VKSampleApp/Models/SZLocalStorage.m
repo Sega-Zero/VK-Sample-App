@@ -29,9 +29,16 @@
 
 #pragma mark public methods
 
-- (NSFetchedResultsController *)newsFeedFetchedResultsController {
-    //TODO: implement
-    return nil;
+- (NSFetchedResultsController *)newsFeedFetchedResultsController:(id<NSFetchedResultsControllerDelegate>)delegate {
+
+    NSFetchedResultsController *result = [SZPost MR_fetchAllSortedBy:@"date" ascending:NO withPredicate:nil groupBy:nil delegate:delegate];
+
+    NSError *error = nil;
+    if (![result performFetch:&error] || error) {
+        DDLogError(@"[storage] couldn't perform fetch with error %@", error);
+    };
+
+    return result;
 }
 
 - (void)cleanUpStack {

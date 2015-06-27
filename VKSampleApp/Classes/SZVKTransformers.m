@@ -101,6 +101,12 @@
             text = self.object[@"geo"][@"place"][@"title"];
         }
     }
+    if (text.length == 0 && self.object[@"attachment"][@"link"]) {
+        text = self.object[@"attachment"][@"link"][@"url"];
+    }
+    if (text.length == 0 && self.object[@"attachment"][@"audio"]) {
+        text = NSLocalizedString(@"audio", "'audio' title for post content");
+    }
     entity.text = text;
 }
 

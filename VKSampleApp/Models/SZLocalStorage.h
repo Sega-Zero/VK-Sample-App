@@ -17,8 +17,10 @@
 
 /**
  NSFetchedResultsController to be used in newsfeed UI
+ @param
+ delegate delegate that will receive changes
  */
-- (NSFetchedResultsController *)newsFeedFetchedResultsController;
+- (NSFetchedResultsController *)newsFeedFetchedResultsController:(id<NSFetchedResultsControllerDelegate>)delegate;
 
 /**
  Clean up Magical Record Stack

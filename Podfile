@@ -6,3 +6,4 @@ pod "MagicalRecord"
 pod 'FastImageCache', '~> 1.3'
 pod 'PSTAlertController'
 pod 'Reachability'
+pod "NSAttributedString-DDHTML"

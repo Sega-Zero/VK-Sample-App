@@ -9,16 +9,103 @@
         <scene sceneID="0la-NE-xus">
             <objects>
                 <tableViewController id="BeG-uj-V5w" customClass="SZNewsFeedViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eV2-JO-R1M">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="252" sectionHeaderHeight="22" sectionFooterHeight="22" id="eV2-JO-R1M">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedCellID" id="3v0-FT-mFs">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedCellID" rowHeight="252" id="3v0-FT-mFs" customClass="SZNewsFeedTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3v0-FT-mFs" id="c2w-ty-AYd">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="mLC-CS-NBy" userLabel="avatar">
+                                            <rect key="frame" x="8" y="8" width="35" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="FHX-C3-0bs"/>
+                                                <constraint firstAttribute="width" constant="35" id="FfR-DY-hlM"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1P-ra-Tn6">
+                                            <rect key="frame" x="51" y="8" width="67.5" height="16"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                            <color key="textColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.57372416187342656" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="yesterday at 19:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2T-fp-V6n">
+                                            <rect key="frame" x="51" y="28" width="86.5" height="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DW-1t-cM8" userLabel="like count">
+                                            <rect key="frame" x="586" y="236.5" width="6" height="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.57372416189999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="published" translatesAutoresizingMaskIntoConstraints="NO" id="oSq-jH-j0g" userLabel="repost icon">
+                                            <rect key="frame" x="544" y="238.5" width="9" height="9"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmN-A2-wFL" userLabel="repost count">
+                                            <rect key="frame" x="557" y="236.5" width="6" height="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.57372416189999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="nA5-lD-Opk" userLabel="like icon">
+                                            <rect key="frame" x="571" y="237.5" width="11" height="10"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Long message text that wraps. Long message text that wraps. Long message text that wraps. Long message text that wraps. " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="fG2-oF-74x" customClass="SZAdjustLabel">
+                                            <rect key="frame" x="8" y="47" width="592" height="43"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="G7Z-bg-Urk" userLabel="pictures placeholder">
+                                            <rect key="frame" x="8" y="86" width="592" height="150"/>
+                                            <color key="backgroundColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.57372416189999997" alpha="0.31" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="150" id="2It-iQ-WOX" userLabel="picturePlaceholderHeight"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="G7Z-bg-Urk" firstAttribute="leading" secondItem="mLC-CS-NBy" secondAttribute="leading" id="0Xk-xi-zWv" userLabel="avatarLeadingToPicturesPlaceholderLeading"/>
+                                        <constraint firstAttribute="trailing" secondItem="G7Z-bg-Urk" secondAttribute="trailing" id="2Tc-Hz-bGx" userLabel="picturesPlaceholderTrailingToSuperview"/>
+                                        <constraint firstAttribute="trailing" secondItem="fG2-oF-74x" secondAttribute="trailing" id="4UJ-ep-rfO" userLabel="postMessageTrailingToSuperview"/>
+                                        <constraint firstItem="fG2-oF-74x" firstAttribute="leading" secondItem="mLC-CS-NBy" secondAttribute="leading" id="5dk-kt-LsT" userLabel="avatarLeadingToPostMessageLeading"/>
+                                        <constraint firstItem="SmN-A2-wFL" firstAttribute="centerY" secondItem="3DW-1t-cM8" secondAttribute="centerY" id="8od-lI-jcB" userLabel="repostCountCenterY"/>
+                                        <constraint firstItem="3DW-1t-cM8" firstAttribute="centerY" secondItem="nA5-lD-Opk" secondAttribute="centerY" id="9LA-bu-OmS" userLabel="likeCountCenterY"/>
+                                        <constraint firstItem="SmN-A2-wFL" firstAttribute="centerY" secondItem="oSq-jH-j0g" secondAttribute="centerY" id="EKF-XU-jW8" userLabel="repostIconCenterY"/>
+                                        <constraint firstItem="SmN-A2-wFL" firstAttribute="leading" secondItem="oSq-jH-j0g" secondAttribute="trailing" constant="4" id="Evx-2q-WfL" userLabel="repostCountLeadingToRepostIconTrailing"/>
+                                        <constraint firstAttribute="bottom" secondItem="G7Z-bg-Urk" secondAttribute="bottom" priority="999" constant="16" id="HXK-1k-ViP" userLabel="picturesPlaceholderBottomToSuperview"/>
+                                        <constraint firstItem="mLC-CS-NBy" firstAttribute="top" secondItem="c2w-ty-AYd" secondAttribute="top" constant="8" id="K89-YR-2mj" userLabel="avatarTopToSuperview"/>
+                                        <constraint firstItem="nA5-lD-Opk" firstAttribute="leading" secondItem="SmN-A2-wFL" secondAttribute="trailing" constant="8" id="S87-Vv-KSe" userLabel="likeIconLeadingToRepostCountTrailing"/>
+                                        <constraint firstItem="O1P-ra-Tn6" firstAttribute="leading" secondItem="mLC-CS-NBy" secondAttribute="trailing" constant="8" symbolic="YES" id="T1g-nx-0GS" userLabel="usernameLeadingToAvatarTrailing"/>
+                                        <constraint firstItem="nA5-lD-Opk" firstAttribute="top" secondItem="G7Z-bg-Urk" secondAttribute="bottom" constant="2" id="TRz-fK-ryo" userLabel="likeIconTopToPicturesPlaceholderBottom"/>
+                                        <constraint firstAttribute="trailing" secondItem="3DW-1t-cM8" secondAttribute="trailing" constant="8" id="YUd-gK-fyU" userLabel="likeCountTrailingToSuperView"/>
+                                        <constraint firstItem="mLC-CS-NBy" firstAttribute="leading" secondItem="c2w-ty-AYd" secondAttribute="leading" constant="8" id="Zah-pa-lqI" userLabel="avatarLeadingToSuperview"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="O1P-ra-Tn6" secondAttribute="trailing" constant="8" id="csp-ue-8gd" userLabel="usernameTrailing"/>
+                                        <constraint firstItem="3DW-1t-cM8" firstAttribute="leading" secondItem="nA5-lD-Opk" secondAttribute="trailing" constant="4" id="eCk-bj-Y10" userLabel="likeCountLeadingToLikeIconTrailing"/>
+                                        <constraint firstItem="fG2-oF-74x" firstAttribute="top" secondItem="mLC-CS-NBy" secondAttribute="bottom" constant="4" id="hay-Sm-PhT" userLabel="postMessageTopToAvatarBottom"/>
+                                        <constraint firstItem="G7Z-bg-Urk" firstAttribute="top" secondItem="fG2-oF-74x" secondAttribute="bottom" priority="750" constant="4" id="mF5-za-mPe" userLabel="picturesPlaceholderTopToPostMessageBottom"/>
+                                        <constraint firstItem="mLC-CS-NBy" firstAttribute="top" secondItem="O1P-ra-Tn6" secondAttribute="top" id="nfC-Sk-Zty" userLabel="avatarTopToUsernameTop"/>
+                                        <constraint firstItem="o2T-fp-V6n" firstAttribute="leading" secondItem="O1P-ra-Tn6" secondAttribute="leading" id="u68-Uk-Uvz" userLabel="timelabeLeadingToUsernameLeading"/>
+                                        <constraint firstItem="mLC-CS-NBy" firstAttribute="bottom" secondItem="o2T-fp-V6n" secondAttribute="bottom" constant="3" id="yWg-MC-Gcz" userLabel="avatarBottomToTimelabelBottom"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatar" destination="mLC-CS-NBy" id="1Wo-CI-2Ew"/>
+                                    <outlet property="likeImage" destination="nA5-lD-Opk" id="fhH-QS-nJ2"/>
+                                    <outlet property="likesCountLabel" destination="3DW-1t-cM8" id="9u1-4A-8rF"/>
+                                    <outlet property="picturesHeightConstraint" destination="2It-iQ-WOX" id="vrx-U4-qwp"/>
+                                    <outlet property="postMessageText" destination="fG2-oF-74x" id="Rc2-oP-iUE"/>
+                                    <outlet property="repostImage" destination="oSq-jH-j0g" id="Zak-yx-DxI"/>
+                                    <outlet property="repostsCountLabel" destination="SmN-A2-wFL" id="nNc-Sm-wxs"/>
+                                    <outlet property="timeLabel" destination="o2T-fp-V6n" id="azS-C3-8Ic"/>
+                                    <outlet property="username" destination="O1P-ra-Tn6" id="Wty-rc-ak6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -38,7 +125,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTb-MY-bZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="59" y="291"/>
+            <point key="canvasLocation" x="58" y="291"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rqg-73-ntM">
@@ -57,4 +144,9 @@
             <point key="canvasLocation" x="-761" y="291"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="like" width="11" height="10"/>
+        <image name="logo" width="64" height="64"/>
+        <image name="published" width="9" height="9"/>
+    </resources>
 </document>
