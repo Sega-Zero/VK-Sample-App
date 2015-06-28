@@ -20,10 +20,7 @@
 @implementation SZNewsFeedViewController
 {
     NSFetchedResultsController *_fetchedResultsController;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+    SZNewsFeedTableViewCell *_cacheSizeCell;
 }
 
 #pragma mark setters and actions
@@ -84,19 +81,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    static SZNewsFeedTableViewCell *cacheSizeCell = nil;
-    if (!cacheSizeCell) {
-        cacheSizeCell = [tableView dequeueReusableCellWithIdentifier:@"FeedCellID"];
+    if (!_cacheSizeCell) {
+        _cacheSizeCell = [tableView dequeueReusableCellWithIdentifier:@"FeedCellID"];
     };
 
-    [self configureCell:cacheSizeCell atIndexPath:indexPath isOffScreen:YES];
+    [self configureCell:_cacheSizeCell atIndexPath:indexPath isOffScreen:YES];
 
-    cacheSizeCell.contentView.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.frame),CGRectGetHeight(self.tableView.frame));
+    _cacheSizeCell.contentView.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.frame),CGRectGetHeight(self.tableView.frame));
 
-    [cacheSizeCell.contentView setNeedsLayout];
-    [cacheSizeCell.contentView layoutIfNeeded];
+    [_cacheSizeCell.contentView setNeedsLayout];
+    [_cacheSizeCell.contentView layoutIfNeeded];
 
-    CGFloat height = [cacheSizeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    CGFloat height = [_cacheSizeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 
     return height + 1/*separator*/;
 }

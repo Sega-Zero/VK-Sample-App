@@ -41,7 +41,9 @@
     [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
 
     NSURLSessionDownloadTask *task = [_manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-
+        if (![[NSFileManager defaultManager] fileExistsAtPath:[filePath stringByDeletingLastPathComponent]]) {
+            [[NSFileManager defaultManager] createDirectoryAtPath:[filePath stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:nil];
+        }
         return [NSURL fileURLWithPath:filePath];
 
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
