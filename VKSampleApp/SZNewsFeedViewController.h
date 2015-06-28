@@ -12,8 +12,8 @@
 
 @interface SZNewsFeedViewController : UITableViewController
 
-@property (weak) SZServerController *serverController;
-@property (weak) SZLocalStorage *localStorage;
+@property (weak, nonatomic) SZServerController *serverController;
+@property (weak, nonatomic) SZLocalStorage *localStorage;
 
 @end
 

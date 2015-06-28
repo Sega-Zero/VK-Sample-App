@@ -19,4 +19,5 @@
 @property (strong, nonatomic) IBOutlet UIImageView *repostImage;
 @property (strong, nonatomic) IBOutlet UILabel *postMessageText;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *picturesHeightConstraint;
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @end

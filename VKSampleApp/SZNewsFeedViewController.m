@@ -10,8 +10,10 @@
 #import <PSTAlertController.h>
 #import "SZNewsFeedTableViewCell.h"
 #import <NSAttributedString+DDHTML.h>
+#import "SZPostDetailsTableViewController.h"
+#import "SZNewsFeedCollectionViewCell.h"
 
-@interface SZNewsFeedViewController ()<UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate>
+@interface SZNewsFeedViewController ()<UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end
 
@@ -24,6 +26,8 @@
     [super viewDidLoad];
 }
 
+#pragma mark setters and actions
+
 - (IBAction)logoutPressed:(id)sender {
     PSTAlertController *logoutSheet = [PSTAlertController actionSheetWithTitle:nil];
     [logoutSheet addAction:[PSTAlertAction actionWithTitle:NSLocalizedString(@"Logout", "logout action item title")
@@ -34,6 +38,21 @@
 
     [logoutSheet addCancelActionWithHandler:nil];
     [logoutSheet showWithSender:self controller:self animated:YES completion:nil];
+}
+
+-(void)setLocalStorage:(SZLocalStorage *)localStorage {
+    _localStorage = localStorage;
+    [self.tableView reloadData];
+}
+
+#pragma mark Storyboard
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showDetailsSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSManagedObject *post = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [(SZPostDetailsTableViewController*)segue.destinationViewController setPost:(SZPost*)post];
+    }
 }
 
 #pragma mark - Table View
@@ -100,6 +119,9 @@
     cell.repostImage.hidden = object.repostCountValue == 0;
     cell.repostsCountLabel.hidden = object.repostCountValue == 0;
     cell.repostsCountLabel.text = [NSString stringWithFormat:@"%@", object.repostCount];
+
+    [cell.collectionView setTag:indexPath.row];
+    [cell.collectionView reloadData];
 }
 
 #pragma mark - Fetched results controller
@@ -166,6 +188,24 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
+}
+
+#pragma mark Collection View
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    SZPost *object = [[self fetchedResultsController] objectAtIndexPath:[NSIndexPath indexPathForRow:collectionView.tag inSection:0]];
+    return object.photos.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+//    SZPost *object = [[self fetchedResultsController] objectAtIndexPath:[NSIndexPath indexPathForRow:collectionView.tag inSection:0]];
+    SZNewsFeedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"photoCollectionCellID" forIndexPath:indexPath];
+    cell.photoImageView.image = [UIImage imageNamed:@"logo"];
+    return cell;
 }
 
 @end

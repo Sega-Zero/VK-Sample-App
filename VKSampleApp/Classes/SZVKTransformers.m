@@ -85,7 +85,11 @@
 @implementation SZVKPostDataTransformer
 
 -(NSString *)objectID {
-    return self.object[@"post_id"] ? [NSString stringWithFormat:@"%@",self.object[@"post_id"]] : nil;
+    NSString *postId = self.object[@"post_id"] ? [NSString stringWithFormat:@"%@",self.object[@"post_id"]] : nil;
+    if (!postId && [self.object[@"type"] isEqualToString:@"wall_photo"]) {
+        postId = [NSString stringWithFormat:@"wp_%@", self.object[@"date"]];
+    }
+    return postId;
 }
 
 -(void)fillEntity:(SZPost *)entity {
@@ -116,12 +120,15 @@
     if (attachments.count == 0 && self.object[@"attachment"]) {
         attachments = [NSArray arrayWithObject:self.object[@"attachment"]];
     }
-    if (attachments.count == 0) {
-        return @[];
-    }
     for (NSDictionary *attachment in attachments) {
         if ([attachment[@"type"] isEqualToString:@"photo"]) {
             SZVKPhotoDataTransformer *transformer = [[SZVKPhotoDataTransformer alloc] initWithObject:attachment[@"photo"]];
+            [photos addObject:transformer];
+        }
+    }
+    for (id photo in self.object[@"photos"]) {
+        if ([photo isKindOfClass:[NSDictionary class]]) {
+            SZVKPhotoDataTransformer *transformer = [[SZVKPhotoDataTransformer alloc] initWithObject:photo];
             [photos addObject:transformer];
         }
     }

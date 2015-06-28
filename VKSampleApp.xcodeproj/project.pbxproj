@@ -24,6 +24,10 @@
 		B4907531A3084CA6BFF3117F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7247B2D797DDF3A00845BFE /* libPods.a */; };
 		CE5187611B3DCF1500D120D7 /* SZNewsFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187601B3DCF1500D120D7 /* SZNewsFeedTableViewCell.m */; };
 		CE5187681B3F243600D120D7 /* SZAdjustLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187671B3F243600D120D7 /* SZAdjustLabel.m */; };
+		CE51876B1B3F419C00D120D7 /* SZPostDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51876A1B3F419C00D120D7 /* SZPostDetailsTableViewController.m */; };
+		CE51876E1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51876D1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.m */; };
+		CE5187711B3F428800D120D7 /* SZPostDetailsPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187701B3F428800D120D7 /* SZPostDetailsPhotoTableViewCell.m */; };
+		CE5187741B3F6CB400D120D7 /* SZNewsFeedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187731B3F6CB400D120D7 /* SZNewsFeedCollectionViewCell.m */; };
 		CE7334361B3D397000F60735 /* SZVKTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7334351B3D397000F60735 /* SZVKTransformers.m */; };
 		CE7334371B3D397000F60735 /* SZVKTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7334351B3D397000F60735 /* SZVKTransformers.m */; };
 		CE9B34CD1B3B2E0F005507F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34CC1B3B2E0F005507F4 /* main.m */; };
@@ -70,6 +74,14 @@
 		CE5187601B3DCF1500D120D7 /* SZNewsFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZNewsFeedTableViewCell.m; sourceTree = "<group>"; };
 		CE5187661B3F243600D120D7 /* SZAdjustLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZAdjustLabel.h; path = Classes/SZAdjustLabel.h; sourceTree = "<group>"; };
 		CE5187671B3F243600D120D7 /* SZAdjustLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZAdjustLabel.m; path = Classes/SZAdjustLabel.m; sourceTree = "<group>"; };
+		CE5187691B3F419C00D120D7 /* SZPostDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPostDetailsTableViewController.h; sourceTree = "<group>"; };
+		CE51876A1B3F419C00D120D7 /* SZPostDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPostDetailsTableViewController.m; sourceTree = "<group>"; };
+		CE51876C1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPostDetailsMainTableViewCell.h; sourceTree = "<group>"; };
+		CE51876D1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPostDetailsMainTableViewCell.m; sourceTree = "<group>"; };
+		CE51876F1B3F428800D120D7 /* SZPostDetailsPhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPostDetailsPhotoTableViewCell.h; sourceTree = "<group>"; };
+		CE5187701B3F428800D120D7 /* SZPostDetailsPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPostDetailsPhotoTableViewCell.m; sourceTree = "<group>"; };
+		CE5187721B3F6CB400D120D7 /* SZNewsFeedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZNewsFeedCollectionViewCell.h; sourceTree = "<group>"; };
+		CE5187731B3F6CB400D120D7 /* SZNewsFeedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZNewsFeedCollectionViewCell.m; sourceTree = "<group>"; };
 		CE7334341B3D397000F60735 /* SZVKTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZVKTransformers.h; path = Classes/SZVKTransformers.h; sourceTree = "<group>"; };
 		CE7334351B3D397000F60735 /* SZVKTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZVKTransformers.m; path = Classes/SZVKTransformers.m; sourceTree = "<group>"; };
 		CE9B34C71B3B2E0F005507F4 /* VKSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +157,12 @@
 			children = (
 				CE51875F1B3DCF1500D120D7 /* SZNewsFeedTableViewCell.h */,
 				CE5187601B3DCF1500D120D7 /* SZNewsFeedTableViewCell.m */,
+				CE51876C1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.h */,
+				CE51876D1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.m */,
+				CE51876F1B3F428800D120D7 /* SZPostDetailsPhotoTableViewCell.h */,
+				CE5187701B3F428800D120D7 /* SZPostDetailsPhotoTableViewCell.m */,
+				CE5187721B3F6CB400D120D7 /* SZNewsFeedCollectionViewCell.h */,
+				CE5187731B3F6CB400D120D7 /* SZNewsFeedCollectionViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -261,6 +279,8 @@
 				CE9B34D21B3B2E0F005507F4 /* SZNewsFeedViewController.m */,
 				CEB9D1371B3C34B50052D5FC /* SZLoginViewController.h */,
 				CEB9D1381B3C34B50052D5FC /* SZLoginViewController.m */,
+				CE5187691B3F419C00D120D7 /* SZPostDetailsTableViewController.h */,
+				CE51876A1B3F419C00D120D7 /* SZPostDetailsTableViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -463,12 +483,16 @@
 				CE9B355B1B3C0FA3005507F4 /* SZImageLoader.m in Sources */,
 				CE9B34D31B3B2E0F005507F4 /* SZNewsFeedViewController.m in Sources */,
 				CE9B34D01B3B2E0F005507F4 /* AppDelegate.m in Sources */,
+				CE5187711B3F428800D120D7 /* SZPostDetailsPhotoTableViewCell.m in Sources */,
 				CE9B35051B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */,
+				CE51876E1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.m in Sources */,
 				CE7334361B3D397000F60735 /* SZVKTransformers.m in Sources */,
 				CE9B35581B3BFAEE005507F4 /* SZImageCache.m in Sources */,
+				CE51876B1B3F419C00D120D7 /* SZPostDetailsTableViewController.m in Sources */,
 				CE9B35101B3B3997005507F4 /* SZModel.m in Sources */,
 				CE5187681B3F243600D120D7 /* SZAdjustLabel.m in Sources */,
 				CE9B34CD1B3B2E0F005507F4 /* main.m in Sources */,
+				CE5187741B3F6CB400D120D7 /* SZNewsFeedCollectionViewCell.m in Sources */,
 				CEB9D1391B3C34B50052D5FC /* SZLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

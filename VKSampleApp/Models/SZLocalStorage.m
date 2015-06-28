@@ -31,7 +31,11 @@
 
 - (NSFetchedResultsController *)newsFeedFetchedResultsController:(id<NSFetchedResultsControllerDelegate>)delegate {
 
-    NSFetchedResultsController *result = [SZPost MR_fetchAllSortedBy:@"date" ascending:NO withPredicate:nil groupBy:nil delegate:delegate];
+    NSFetchedResultsController *result = [SZPost MR_fetchAllSortedBy:@"date"
+                                                           ascending:NO
+                                                       withPredicate:nil
+                                                             groupBy:nil
+                                                            delegate:delegate inContext:[NSManagedObjectContext MR_defaultContext]];
 
     NSError *error = nil;
     if (![result performFetch:&error] || error) {
@@ -80,8 +84,6 @@
             NSArray *posts = postsMap[transformer.objectID];
             for (NSDictionary *post in posts) {
                 SZVKPostDataTransformer *postTransformer = [[SZVKPostDataTransformer alloc] initWithObject:post];
-                //separate photo posts will not have an id, so we should skip it, since we cannot add it to database
-                //TODO: maybe we should generate id from the url?
                 if ([postTransformer objectID].length == 0) {
                     break;
                 }
