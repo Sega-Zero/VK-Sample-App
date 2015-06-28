@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SZServerController.h"
 #import "SZLocalStorage.h"
+#import "SZVKImageManager.h"
 
 @interface SZNewsFeedViewController : UITableViewController
 
 @property (weak, nonatomic) SZServerController *serverController;
 @property (weak, nonatomic) SZLocalStorage *localStorage;
+@property (weak, nonatomic) SZVKImageManager *imageManager;
 
 @end
 

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SZModel.h"
+#import "SZVKImageManager.h"
 
 @interface SZPostDetailsTableViewController : UITableViewController
 
 @property (nonatomic) SZPost *post;
+@property (weak, nonatomic) SZVKImageManager *imageManager;
 
 @end

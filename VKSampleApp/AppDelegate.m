@@ -14,6 +14,7 @@
 #import <CocoaLumberjack.h>
 #import <DDTTYLogger.h>
 #import <DDFileLogger.h>
+#import "SZVKImageManager.h"
 
 @interface AppDelegate ()<SZServerControllerDelegate, SZLoginViewControllerDelegate>
 
@@ -23,6 +24,7 @@
 {
     SZLocalStorage *_localStorage;
     SZServerController *_serverController;
+    SZVKImageManager *_imageManager;
 }
 
 #pragma mark app lifetime 
@@ -45,6 +47,8 @@
     _localStorage = [SZLocalStorage new];
     _serverController = [SZServerController new];
     _serverController.delegate = self;
+
+    _imageManager = [SZVKImageManager new];
 
     [self switchStoryBoardTo:_serverController.isUserLoggedIn ? @"Main" : @"Login"];
     [self ensureDatabaseIsNotEmpty];
@@ -72,6 +76,7 @@
         SZNewsFeedViewController *newsVC = (SZNewsFeedViewController*)[(UINavigationController*)rootVC topViewController];
         newsVC.serverController = _serverController;
         newsVC.localStorage = _localStorage;
+        newsVC.imageManager = _imageManager;
     }
     if ([rootVC isKindOfClass:[SZLoginViewController class]]) {
         SZLoginViewController *loginVC = (SZLoginViewController*)rootVC;
@@ -94,6 +99,7 @@
 -(void)userDidLogout {
     [self switchStoryBoardTo:@"Login"];
     [_localStorage removeAllRecords];
+    [_imageManager cleanup];
 }
 
 #pragma mark loginview delegate

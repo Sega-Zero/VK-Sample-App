@@ -51,6 +51,7 @@
     if ([segue.identifier isEqualToString:@"showDetailsSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *post = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [(SZPostDetailsTableViewController*)segue.destinationViewController setImageManager:self.imageManager];
         [(SZPostDetailsTableViewController*)segue.destinationViewController setPost:(SZPost*)post];
     }
 }
@@ -68,7 +69,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SZNewsFeedTableViewCell *cell = (SZNewsFeedTableViewCell*) [tableView dequeueReusableCellWithIdentifier:@"FeedCellID" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath isOffScreen:NO];
 
     return cell;
 }
@@ -88,7 +89,7 @@
         cacheSizeCell = [tableView dequeueReusableCellWithIdentifier:@"FeedCellID"];
     };
 
-    [self configureCell:cacheSizeCell atIndexPath:indexPath];
+    [self configureCell:cacheSizeCell atIndexPath:indexPath isOffScreen:YES];
 
     cacheSizeCell.contentView.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.frame),CGRectGetHeight(self.tableView.frame));
 
@@ -100,7 +101,14 @@
     return height + 1/*separator*/;
 }
 
-- (void)configureCell:(SZNewsFeedTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView willDisplayCell:(SZNewsFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    SZPost *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    if (object.photos.count > 0) {
+        [cell.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+    }
+}
+
+- (void)configureCell:(SZNewsFeedTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath isOffScreen:(BOOL)isOffScreen {
     SZPost *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
 
     cell.postMessageText.attributedText = [NSAttributedString attributedStringFromHTML:object.text ?: @""];
@@ -122,6 +130,10 @@
 
     [cell.collectionView setTag:indexPath.row];
     [cell.collectionView reloadData];
+
+    if (!isOffScreen) {
+        [self.imageManager setImageFromUser:object.author to:cell.avatar];
+    }
 }
 
 #pragma mark - Fetched results controller
@@ -175,7 +187,7 @@
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:(SZNewsFeedTableViewCell*)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:(SZNewsFeedTableViewCell*)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath isOffScreen:NO];
             break;
 
         case NSFetchedResultsChangeMove:
@@ -202,9 +214,10 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    SZPost *object = [[self fetchedResultsController] objectAtIndexPath:[NSIndexPath indexPathForRow:collectionView.tag inSection:0]];
     SZNewsFeedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"photoCollectionCellID" forIndexPath:indexPath];
-    cell.photoImageView.image = [UIImage imageNamed:@"logo"];
+    SZPost *object = [[self fetchedResultsController] objectAtIndexPath:[NSIndexPath indexPathForRow:collectionView.tag inSection:0]];
+    SZPhoto *photo = [object.photos objectAtIndex:indexPath.row];
+    [self.imageManager setThumbnailImageFromPhoto:photo to:cell.photoImageView];
     return cell;
 }
 

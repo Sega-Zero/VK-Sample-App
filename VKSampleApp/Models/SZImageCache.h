@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <FastImageCache/FICImageCache.h>
 
 typedef void(^SZImageLoadBlock)(UIImage *image, NSString *loadPath);
 
@@ -21,7 +20,7 @@ typedef void(^SZImageLoadBlock)(UIImage *image, NSString *loadPath);
  @param
  imageSize image size that cache blocks depends on
  */
-- (instancetype)initWithSize:(CGSize)imageSize;
+- (instancetype)initWithSize:(CGSize)imageSize maxCacheCount:(NSUInteger)maxCacheCount;
 
 /**
  Asynchronously loads image from cache (from fast cache or file).
@@ -33,7 +32,7 @@ typedef void(^SZImageLoadBlock)(UIImage *image, NSString *loadPath);
 - (void)loadImageWithPath:(NSString*)imagePath completionHandler:(SZImageLoadBlock)completionHandler;
 
 /**
- Remova all local cache files
+ Remove local cache 
  */
 - (void)clearCache;
 

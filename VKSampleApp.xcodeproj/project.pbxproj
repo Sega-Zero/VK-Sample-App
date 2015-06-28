@@ -22,12 +22,15 @@
 
 /* Begin PBXBuildFile section */
 		B4907531A3084CA6BFF3117F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7247B2D797DDF3A00845BFE /* libPods.a */; };
+		CE1F334F1B4070AF00975AC5 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1F334E1B4070AF00975AC5 /* NSString+Utils.m */; };
 		CE5187611B3DCF1500D120D7 /* SZNewsFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187601B3DCF1500D120D7 /* SZNewsFeedTableViewCell.m */; };
 		CE5187681B3F243600D120D7 /* SZAdjustLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187671B3F243600D120D7 /* SZAdjustLabel.m */; };
 		CE51876B1B3F419C00D120D7 /* SZPostDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51876A1B3F419C00D120D7 /* SZPostDetailsTableViewController.m */; };
 		CE51876E1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51876D1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.m */; };
 		CE5187711B3F428800D120D7 /* SZPostDetailsPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187701B3F428800D120D7 /* SZPostDetailsPhotoTableViewCell.m */; };
 		CE5187741B3F6CB400D120D7 /* SZNewsFeedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187731B3F6CB400D120D7 /* SZNewsFeedCollectionViewCell.m */; };
+		CE5187771B3FE35800D120D7 /* SZModel+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187761B3FE35800D120D7 /* SZModel+Extensions.m */; };
+		CE51877A1B3FFB6F00D120D7 /* SZImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187791B3FFB6F00D120D7 /* SZImageDownloader.m */; };
 		CE7334361B3D397000F60735 /* SZVKTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7334351B3D397000F60735 /* SZVKTransformers.m */; };
 		CE7334371B3D397000F60735 /* SZVKTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7334351B3D397000F60735 /* SZVKTransformers.m */; };
 		CE9B34CD1B3B2E0F005507F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34CC1B3B2E0F005507F4 /* main.m */; };
@@ -44,7 +47,7 @@
 		CE9B35511B3B4E9A005507F4 /* SZLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B35501B3B4E9A005507F4 /* SZLocalStorage.m */; };
 		CE9B35551B3B55CE005507F4 /* SZServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B35541B3B55CE005507F4 /* SZServerController.m */; };
 		CE9B35581B3BFAEE005507F4 /* SZImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B35571B3BFAEE005507F4 /* SZImageCache.m */; };
-		CE9B355B1B3C0FA3005507F4 /* SZImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B355A1B3C0FA3005507F4 /* SZImageLoader.m */; };
+		CE9B355B1B3C0FA3005507F4 /* SZVKImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B355A1B3C0FA3005507F4 /* SZVKImageManager.m */; };
 		CEB9D1361B3C1A580052D5FC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB9D1341B3C1A580052D5FC /* Login.storyboard */; };
 		CEB9D1391B3C34B50052D5FC /* SZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9D1381B3C34B50052D5FC /* SZLoginViewController.m */; };
 /* End PBXBuildFile section */
@@ -70,6 +73,8 @@
 		18CF48A7C269C00E7876C181 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9186A775E2C713F4087BB117 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B7247B2D797DDF3A00845BFE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE1F334D1B4070AF00975AC5 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Utils.h"; path = "Classes/NSString+Utils.h"; sourceTree = "<group>"; };
+		CE1F334E1B4070AF00975AC5 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Utils.m"; path = "Classes/NSString+Utils.m"; sourceTree = "<group>"; };
 		CE51875F1B3DCF1500D120D7 /* SZNewsFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZNewsFeedTableViewCell.h; sourceTree = "<group>"; };
 		CE5187601B3DCF1500D120D7 /* SZNewsFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZNewsFeedTableViewCell.m; sourceTree = "<group>"; };
 		CE5187661B3F243600D120D7 /* SZAdjustLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZAdjustLabel.h; path = Classes/SZAdjustLabel.h; sourceTree = "<group>"; };
@@ -82,6 +87,10 @@
 		CE5187701B3F428800D120D7 /* SZPostDetailsPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPostDetailsPhotoTableViewCell.m; sourceTree = "<group>"; };
 		CE5187721B3F6CB400D120D7 /* SZNewsFeedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZNewsFeedCollectionViewCell.h; sourceTree = "<group>"; };
 		CE5187731B3F6CB400D120D7 /* SZNewsFeedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZNewsFeedCollectionViewCell.m; sourceTree = "<group>"; };
+		CE5187751B3FE35800D120D7 /* SZModel+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SZModel+Extensions.h"; path = "Classes/SZModel+Extensions.h"; sourceTree = "<group>"; };
+		CE5187761B3FE35800D120D7 /* SZModel+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SZModel+Extensions.m"; path = "Classes/SZModel+Extensions.m"; sourceTree = "<group>"; };
+		CE5187781B3FFB6F00D120D7 /* SZImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZImageDownloader.h; path = Classes/SZImageDownloader.h; sourceTree = "<group>"; };
+		CE5187791B3FFB6F00D120D7 /* SZImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZImageDownloader.m; path = Classes/SZImageDownloader.m; sourceTree = "<group>"; };
 		CE7334341B3D397000F60735 /* SZVKTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZVKTransformers.h; path = Classes/SZVKTransformers.h; sourceTree = "<group>"; };
 		CE7334351B3D397000F60735 /* SZVKTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZVKTransformers.m; path = Classes/SZVKTransformers.m; sourceTree = "<group>"; };
 		CE9B34C71B3B2E0F005507F4 /* VKSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,8 +116,8 @@
 		CE9B35541B3B55CE005507F4 /* SZServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZServerController.m; path = Controllers/SZServerController.m; sourceTree = "<group>"; };
 		CE9B35561B3BFAEE005507F4 /* SZImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZImageCache.h; path = Models/SZImageCache.h; sourceTree = "<group>"; };
 		CE9B35571B3BFAEE005507F4 /* SZImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZImageCache.m; path = Models/SZImageCache.m; sourceTree = "<group>"; };
-		CE9B35591B3C0FA3005507F4 /* SZImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZImageLoader.h; path = Controllers/SZImageLoader.h; sourceTree = "<group>"; };
-		CE9B355A1B3C0FA3005507F4 /* SZImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZImageLoader.m; path = Controllers/SZImageLoader.m; sourceTree = "<group>"; };
+		CE9B35591B3C0FA3005507F4 /* SZVKImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZVKImageManager.h; path = Controllers/SZVKImageManager.h; sourceTree = "<group>"; };
+		CE9B355A1B3C0FA3005507F4 /* SZVKImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZVKImageManager.m; path = Controllers/SZVKImageManager.m; sourceTree = "<group>"; };
 		CEB9D1351B3C1A580052D5FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		CEB9D1371B3C34B50052D5FC /* SZLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLoginViewController.h; sourceTree = "<group>"; };
 		CEB9D1381B3C34B50052D5FC /* SZLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLoginViewController.m; sourceTree = "<group>"; };
@@ -265,8 +274,6 @@
 			children = (
 				CE9B354C1B3B4B86005507F4 /* VK */,
 				CE9B34F81B3B3791005507F4 /* UI */,
-				CE9B35591B3C0FA3005507F4 /* SZImageLoader.h */,
-				CE9B355A1B3C0FA3005507F4 /* SZImageLoader.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -300,6 +307,8 @@
 			children = (
 				CE9B35531B3B55CE005507F4 /* SZServerController.h */,
 				CE9B35541B3B55CE005507F4 /* SZServerController.m */,
+				CE9B35591B3C0FA3005507F4 /* SZVKImageManager.h */,
+				CE9B355A1B3C0FA3005507F4 /* SZVKImageManager.m */,
 			);
 			name = VK;
 			sourceTree = "<group>";
@@ -311,6 +320,8 @@
 				CE9B354E1B3B4BE6005507F4 /* Categories */,
 				CE7334341B3D397000F60735 /* SZVKTransformers.h */,
 				CE7334351B3D397000F60735 /* SZVKTransformers.m */,
+				CE5187781B3FFB6F00D120D7 /* SZImageDownloader.h */,
+				CE5187791B3FFB6F00D120D7 /* SZImageDownloader.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -318,6 +329,10 @@
 		CE9B354E1B3B4BE6005507F4 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CE5187751B3FE35800D120D7 /* SZModel+Extensions.h */,
+				CE5187761B3FE35800D120D7 /* SZModel+Extensions.m */,
+				CE1F334D1B4070AF00975AC5 /* NSString+Utils.h */,
+				CE1F334E1B4070AF00975AC5 /* NSString+Utils.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -478,13 +493,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE9B35511B3B4E9A005507F4 /* SZLocalStorage.m in Sources */,
+				CE51877A1B3FFB6F00D120D7 /* SZImageDownloader.m in Sources */,
 				CE5187611B3DCF1500D120D7 /* SZNewsFeedTableViewCell.m in Sources */,
 				CE9B35551B3B55CE005507F4 /* SZServerController.m in Sources */,
-				CE9B355B1B3C0FA3005507F4 /* SZImageLoader.m in Sources */,
+				CE9B355B1B3C0FA3005507F4 /* SZVKImageManager.m in Sources */,
 				CE9B34D31B3B2E0F005507F4 /* SZNewsFeedViewController.m in Sources */,
 				CE9B34D01B3B2E0F005507F4 /* AppDelegate.m in Sources */,
+				CE1F334F1B4070AF00975AC5 /* NSString+Utils.m in Sources */,
 				CE5187711B3F428800D120D7 /* SZPostDetailsPhotoTableViewCell.m in Sources */,
 				CE9B35051B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */,
+				CE5187771B3FE35800D120D7 /* SZModel+Extensions.m in Sources */,
 				CE51876E1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.m in Sources */,
 				CE7334361B3D397000F60735 /* SZVKTransformers.m in Sources */,
 				CE9B35581B3BFAEE005507F4 /* SZImageCache.m in Sources */,

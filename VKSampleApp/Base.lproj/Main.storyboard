@@ -13,6 +13,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="kmr-hh-mSR">
+                            <rect key="frame" x="0.0" y="338" width="600" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedCellID" rowHeight="252" id="3v0-FT-mFs" customClass="SZNewsFeedTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -181,7 +186,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="V53-ji-CMC">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="242" width="600" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -211,22 +216,22 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="Mfs-3B-i9m" userLabel="like icon">
-                                            <rect key="frame" x="571" y="92.5" width="11" height="10"/>
+                                            <rect key="frame" x="571" y="92" width="11" height="10"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVs-rs-T88" userLabel="repost count">
-                                            <rect key="frame" x="557" y="91.5" width="6" height="12"/>
+                                            <rect key="frame" x="557" y="91" width="6" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.57372416189999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMl-47-LQf" userLabel="like count">
-                                            <rect key="frame" x="586" y="91.5" width="6" height="12"/>
+                                            <rect key="frame" x="586" y="91" width="6" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.57372416189999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="published" translatesAutoresizingMaskIntoConstraints="NO" id="3SY-iF-Rbq" userLabel="repost icon">
-                                            <rect key="frame" x="544" y="93.5" width="9" height="9"/>
+                                            <rect key="frame" x="544" y="92.5" width="9" height="9"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ujo-67-BCj" userLabel="username">
                                             <rect key="frame" x="51" y="8" width="67.5" height="16"/>
@@ -267,26 +272,25 @@
                                     <outlet property="usernameLabel" destination="Ujo-67-BCj" id="Jh3-0d-VkC"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailImageCellID" rowHeight="216" id="2BC-a2-e9L" customClass="SZPostDetailsPhotoTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailImageCellID" rowHeight="200" id="2BC-a2-e9L" customClass="SZPostDetailsPhotoTableViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2BC-a2-e9L" id="PVs-Jl-Foe">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="2LH-v1-gPn">
-                                            <rect key="frame" x="8" y="8" width="584" height="199.5"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Nlx-Nw-9YG">
+                                            <rect key="frame" x="8" y="8.5" width="584" height="183.5"/>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="2LH-v1-gPn" firstAttribute="leading" secondItem="PVs-Jl-Foe" secondAttribute="leading" constant="8" id="Q0G-uV-8Gc"/>
-                                        <constraint firstItem="2LH-v1-gPn" firstAttribute="top" secondItem="PVs-Jl-Foe" secondAttribute="top" constant="8" id="ZI1-ad-bNf"/>
-                                        <constraint firstAttribute="trailing" secondItem="2LH-v1-gPn" secondAttribute="trailing" constant="8" id="jab-Zb-mMV"/>
-                                        <constraint firstAttribute="bottom" secondItem="2LH-v1-gPn" secondAttribute="bottom" constant="8" id="nO3-Cd-oeL"/>
+                                        <constraint firstItem="Nlx-Nw-9YG" firstAttribute="leading" secondItem="PVs-Jl-Foe" secondAttribute="leading" constant="8" id="9Mj-qi-3nu"/>
+                                        <constraint firstAttribute="bottom" secondItem="Nlx-Nw-9YG" secondAttribute="bottom" constant="8" id="QTW-tT-Mdi"/>
+                                        <constraint firstItem="Nlx-Nw-9YG" firstAttribute="top" secondItem="PVs-Jl-Foe" secondAttribute="top" constant="8" id="YQL-6W-g9L"/>
+                                        <constraint firstAttribute="trailing" secondItem="Nlx-Nw-9YG" secondAttribute="trailing" constant="8" id="bGy-8g-iq6"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="postImageView" destination="2LH-v1-gPn" id="ewk-mo-SI4"/>
+                                    <outlet property="postImageView" destination="Nlx-Nw-9YG" id="fok-JE-sjl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -295,6 +299,7 @@
                             <outlet property="delegate" destination="mER-gb-JC2" id="GNw-t9-W7s"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fe9-zz-uj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

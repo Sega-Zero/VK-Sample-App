@@ -10,12 +10,33 @@
 #import "SZPostDetailsMainTableViewCell.h"
 #import "SZPostDetailsPhotoTableViewCell.h"
 #import <NSAttributedString+DDHTML.h>
+#import "SZModel+Extensions.h"
 
 @interface SZPostDetailsTableViewController ()
 
 @end
 
 @implementation SZPostDetailsTableViewController
+{
+    NSCache *_fullSizeImagesCache;
+}
+
+#pragma mark viewcontroller
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [_fullSizeImagesCache removeAllObjects];
+    _fullSizeImagesCache = [[NSCache alloc] init];
+}
+
+#pragma mark setters
+
+- (void)setPost:(SZPost *)post {
+    _post = post;
+
+    [self.tableView reloadData];
+}
 
 #pragma mark - Table view data source
 
@@ -24,7 +45,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.post.photos.count + 1;;
+    return self.post.photos.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -35,6 +56,7 @@
         [self configureMainCell:(SZPostDetailsMainTableViewCell*)cell];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"DetailImageCellID" forIndexPath:indexPath];
+        [self configurePhotoCell:(SZPostDetailsPhotoTableViewCell*)cell atIndexPath:indexPath];
     }
     
     return cell;
@@ -42,31 +64,30 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    UITableViewCell *cacheCell = nil;
+    if (indexPath.row > 0) {
+        SZPhoto *photo = [self.post.photos objectAtIndex:indexPath.row - 1];
+        CGFloat width = photo.widthValue;
+        CGFloat height = photo.heightValue;
+
+        CGSize screenSize = [UIScreen mainScreen].bounds.size;
+        CGFloat multiplier = screenSize.width / width;
+
+        CGFloat result = (height * multiplier);
+        return result + 16;
+    }
 
     static SZPostDetailsMainTableViewCell *mainCellCached = nil;
     if (!mainCellCached) {
         mainCellCached = [tableView dequeueReusableCellWithIdentifier:@"DetailTextCellID"];
     };
-    static SZPostDetailsPhotoTableViewCell *photoCellCached = nil;
-    if (!photoCellCached) {
-        photoCellCached = [tableView dequeueReusableCellWithIdentifier:@"DetailImageCellID"];
-    };
+    [self configureMainCell:mainCellCached];
 
-    if (indexPath.row == 0) {
-        [self configureMainCell:mainCellCached];
-        cacheCell = mainCellCached;
-    } else {
-        [self configurePhotoCell:photoCellCached atIndexPath:indexPath];
-        cacheCell = photoCellCached;
-    }
+    mainCellCached.contentView.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.frame), CGRectGetHeight(self.tableView.frame));
 
-    cacheCell.contentView.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.frame),CGRectGetHeight(self.tableView.frame));
+    [mainCellCached.contentView setNeedsLayout];
+    [mainCellCached.contentView layoutIfNeeded];
 
-    [cacheCell.contentView setNeedsLayout];
-    [cacheCell.contentView layoutIfNeeded];
-
-    CGFloat height = [cacheCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    CGFloat height = [mainCellCached.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 
     return height + 1/*separator*/;
 }
@@ -86,10 +107,27 @@
     cell.repostImageView.hidden = self.post.repostCountValue == 0;
     cell.repostCountLabel.hidden = self.post.repostCountValue == 0;
     cell.repostCountLabel.text = [NSString stringWithFormat:@"%@", self.post.repostCount];
+
+    [self.imageManager setImageFromUser:self.post.author to:cell.avatarImageView];
 }
 
 - (void)configurePhotoCell:(SZPostDetailsPhotoTableViewCell*)cell atIndexPath:(NSIndexPath *)indexPath {
-    cell.imageView.image = [UIImage imageNamed:@"logo"];
+
+    SZPhoto *photo = [self.post.photos objectAtIndex:indexPath.row - 1];
+    UIImage *photoImage = [_fullSizeImagesCache objectForKey:[photo fullImagePath]];
+    if (!photoImage) {
+        cell.postImageView.image = nil;
+        [self.imageManager loadFullImageFromPhoto:photo completionHandler:^(UIImage *image) {
+            if (image) {
+                [_fullSizeImagesCache setObject:image forKey:[photo fullImagePath]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    cell.postImageView.image = image;
+                });
+            }
+        }];
+    } else {
+        cell.postImageView.image = photoImage;
+    }
 }
 
 @end
