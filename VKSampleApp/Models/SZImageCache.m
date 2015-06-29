@@ -103,7 +103,7 @@
         [_internalCache setFormats:@[[FICImageFormat formatWithName:_entityFormat
                                                              family:[NSBundle mainBundle].bundleIdentifier
                                                           imageSize:imageSize
-                                                              style:FICImageFormatStyle32BitBGRA
+                                                              style:FICImageFormatStyle32BitBGR
                                                        maximumCount:maxCacheCount
                                                             devices:FICImageFormatDevicePhone | FICImageFormatDevicePad
                                                      protectionMode:FICImageFormatProtectionModeNone]]];
