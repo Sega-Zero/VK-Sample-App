@@ -8,6 +8,8 @@
 
 #import "SZVKTransformers.h"
 #import "SZModel.h"
+#import <UIKit/UIKit.h>
+#import <NSAttributedString+DDHTML.h>
 
 @interface SZVKTransformer()
 
@@ -111,7 +113,7 @@
     if (text.length == 0 && self.object[@"attachment"][@"audio"]) {
         text = NSLocalizedString(@"audio", "'audio' title for post content");
     }
-    entity.text = text;
+    entity.text = [NSAttributedString attributedStringFromHTML:text ?: @""];
 }
 
 - (NSArray*)photoTransformers {

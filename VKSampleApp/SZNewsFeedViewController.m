@@ -9,7 +9,6 @@
 #import "SZNewsFeedViewController.h"
 #import <PSTAlertController.h>
 #import "SZNewsFeedTableViewCell.h"
-#import <NSAttributedString+DDHTML.h>
 #import "SZPostDetailsTableViewController.h"
 #import "SZNewsFeedCollectionViewCell.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
@@ -23,6 +22,7 @@
     NSFetchedResultsController *_fetchedResultsController;
     SZNewsFeedTableViewCell *_cacheSizeCell;
     BOOL _oldPostsLoading;
+    NSDateFormatter *_dateFormatter;
 }
 
 - (void)viewDidLoad {
@@ -40,6 +40,10 @@
     self.tableView.bottomRefreshControl = bottomRefreshControl;
 
     _oldPostsLoading = NO;
+
+    NSString *format = [NSDateFormatter dateFormatFromTemplate:@"dd:mm:hh MMMYYYY" options:0 locale:[NSLocale autoupdatingCurrentLocale]];
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    _dateFormatter.dateFormat = format;
 }
 
 #pragma mark setters and actions
@@ -164,12 +168,15 @@
 - (void)configureCell:(SZNewsFeedTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath isOffScreen:(BOOL)isOffScreen {
     SZPost *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
 
-    cell.postMessageText.attributedText = [NSAttributedString attributedStringFromHTML:object.text ?: @""];
+    cell.postMessageText.attributedText = object.text;
+
+    if (isOffScreen) {
+        return;
+    }
+
     cell.username.text = object.author.name ?: @"";
 
-    cell.timeLabel.text = [NSDateFormatter localizedStringFromDate:object.date
-                                                         dateStyle:NSDateFormatterShortStyle
-                                                         timeStyle:NSDateFormatterMediumStyle];
+    cell.timeLabel.text = [_dateFormatter stringFromDate:object.date];;
 
     cell.likeImage.hidden = object.likesCountValue == 0;
     cell.likesCountLabel.hidden = object.likesCountValue == 0;
@@ -178,13 +185,11 @@
     cell.repostImage.hidden = object.repostCountValue == 0;
     cell.repostsCountLabel.hidden = object.repostCountValue == 0;
     cell.repostsCountLabel.text = [NSString stringWithFormat:@"%@", object.repostCount];
-
+    
     [cell.collectionView setTag:indexPath.row];
     [cell.collectionView reloadData];
 
-    if (!isOffScreen) {
-        [self.imageManager setImageFromUser:object.author to:cell.avatar];
-    }
+    [self.imageManager setImageFromUser:object.author to:cell.avatar];
 }
 
 #pragma mark - Fetched results controller

@@ -76,9 +76,11 @@ static char imagePathKey;
             if (image) {
                 loadedImage = image;
 
-                if ([[weakImageView imagePath] isEqualToString:imagePath]) {
-                    weakImageView.image = image;
-                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if ([[weakImageView imagePath] isEqualToString:imagePath]) {
+                        weakImageView.image = image;
+                    }
+                });
 
             } else {
                 [loader downloadImageWithURL:downloadURL
@@ -125,7 +127,7 @@ static char imagePathKey;
                      cache:_postThumbnailsCache
                     loader:_postImagesLoader
                downloadURL:photo.thumbnailURI
-          placeholderImage:[UIImage imageNamed:@"logo"]
+          placeholderImage:nil
                         to:imageView];
 }
 

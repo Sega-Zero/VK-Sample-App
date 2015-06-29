@@ -15,7 +15,11 @@
         <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="likesCount" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
         <attribute name="repostCount" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="Transformable" valueTransformerName="" syncable="YES">
+            <userInfo>
+                <entry key="attributeValueClassName" value="NSAttributedString"/>
+            </userInfo>
+        </attribute>
         <relationship name="author" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="posts" inverseEntity="User" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Comment" inverseName="parentPost" inverseEntity="Comment" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Photo" inverseName="post" inverseEntity="Photo" syncable="YES"/>
@@ -28,8 +32,8 @@
     </entity>
     <elements>
         <element name="Comment" positionX="-191" positionY="63" width="128" height="60"/>
-        <element name="Photo" positionX="-416" positionY="-180" width="128" height="120"/>
-        <element name="Post" positionX="-218" positionY="-180" width="128" height="165"/>
+        <element name="Photo" positionX="-416" positionY="-180" width="128" height="118"/>
+        <element name="Post" positionX="-218" positionY="-180" width="128" height="163"/>
         <element name="User" positionX="-36" positionY="-177" width="128" height="105"/>
     </elements>
 </model>

@@ -93,7 +93,7 @@
 }
 
 - (void)configureMainCell:(SZPostDetailsMainTableViewCell*)cell {
-    cell.messageTextLabel.attributedText = [NSAttributedString attributedStringFromHTML:self.post.text ?: @""];
+    cell.messageTextLabel.attributedText = self.post.text;
     cell.usernameLabel.text = self.post.author.name ?: @"";
 
     cell.timeLabel.text = [NSDateFormatter localizedStringFromDate:self.post.date

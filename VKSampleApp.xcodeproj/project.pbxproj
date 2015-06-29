@@ -32,7 +32,6 @@
 		CE5187771B3FE35800D120D7 /* SZModel+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187761B3FE35800D120D7 /* SZModel+Extensions.m */; };
 		CE51877A1B3FFB6F00D120D7 /* SZImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5187791B3FFB6F00D120D7 /* SZImageDownloader.m */; };
 		CE7334361B3D397000F60735 /* SZVKTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7334351B3D397000F60735 /* SZVKTransformers.m */; };
-		CE7334371B3D397000F60735 /* SZVKTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7334351B3D397000F60735 /* SZVKTransformers.m */; };
 		CE9B34CD1B3B2E0F005507F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34CC1B3B2E0F005507F4 /* main.m */; };
 		CE9B34D01B3B2E0F005507F4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34CF1B3B2E0F005507F4 /* AppDelegate.m */; };
 		CE9B34D31B3B2E0F005507F4 /* SZNewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B34D21B3B2E0F005507F4 /* SZNewsFeedViewController.m */; };
@@ -521,7 +520,6 @@
 			files = (
 				CE9B35111B3B3997005507F4 /* SZModel.m in Sources */,
 				CE9B35061B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */,
-				CE7334371B3D397000F60735 /* SZVKTransformers.m in Sources */,
 				CE9B34E71B3B2E0F005507F4 /* VKSampleAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
