@@ -7,3 +7,4 @@ pod 'FastImageCache', :head
 pod 'PSTAlertController'
 pod 'Reachability'
 pod "NSAttributedString-DDHTML"
+pod 'CCBottomRefreshControl'

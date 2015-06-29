@@ -64,10 +64,10 @@ static NSString * const VK_API_URL = @"https://api.vk.com";
                                      @"filter"     : @"post,photo",
                                      @"count"      : @100} mutableCopy];
     if (startDate) {
-        [params setValue:[NSString stringWithFormat:@"%f", [startDate timeIntervalSince1970]] forKey:@"start_time"];
+        [params setValue:[NSString stringWithFormat:@"%ld", (long) [startDate timeIntervalSince1970]] forKey:@"start_time"];
     }
     if (endDate) {
-        [params setValue:[NSString stringWithFormat:@"%f", [endDate timeIntervalSince1970]] forKey:@"end_time"];
+        [params setValue:[NSString stringWithFormat:@"%ld", (long) [endDate timeIntervalSince1970]] forKey:@"end_time"];
     }
 
     [_manager GET:@"method/newsfeed.get" parameters:params success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {

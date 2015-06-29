@@ -101,7 +101,10 @@ static char imagePathKey;
             }
         }];
 
-        imageView.image = loadedImage ?: placeholderImage;
+        if (!loadedImage) {
+            imageView.image = placeholderImage;
+        }
+
     }
 }
 

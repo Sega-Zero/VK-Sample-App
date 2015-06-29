@@ -58,6 +58,12 @@
         CGContextClearRect(context, contextBounds);
 
         UIGraphicsPushContext(context);
+        
+        CGFloat white[] = {1, 1, 1, 1};
+        CGContextSetFillColor(context, white);
+        CGContextAddRect(context, contextBounds);
+        CGContextFillPath(context);
+
         if (image.size.height != image.size.width) {
             CGFloat maxSide = MAX(image.size.width, image.size.height);
             CGFloat mutliplier = contextSize.width / maxSide;

@@ -12,6 +12,7 @@
 #import <NSAttributedString+DDHTML.h>
 #import "SZPostDetailsTableViewController.h"
 #import "SZNewsFeedCollectionViewCell.h"
+#import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 
 @interface SZNewsFeedViewController ()<UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -21,6 +22,24 @@
 {
     NSFetchedResultsController *_fetchedResultsController;
     SZNewsFeedTableViewCell *_cacheSizeCell;
+    BOOL _oldPostsLoading;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    UIRefreshControl *topRefreshControl = [UIRefreshControl new];
+    [topRefreshControl addTarget:self action:@selector(loadFreshPosts:) forControlEvents:UIControlEventValueChanged];
+    topRefreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Pull down to load fresh posts", "hint text for top refresh control")];
+
+    UIRefreshControl *bottomRefreshControl = [UIRefreshControl new];
+    [bottomRefreshControl addTarget:self action:@selector(loadOlderPosts:) forControlEvents:UIControlEventValueChanged];
+    bottomRefreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Pull up to load older posts", "hint text for bottom refresh control")];
+    bottomRefreshControl.triggerVerticalOffset = 100.;
+
+    self.refreshControl = topRefreshControl;
+    self.tableView.bottomRefreshControl = bottomRefreshControl;
+
+    _oldPostsLoading = NO;
 }
 
 #pragma mark setters and actions
@@ -37,9 +56,40 @@
     [logoutSheet showWithSender:self controller:self animated:YES completion:nil];
 }
 
--(void)setLocalStorage:(SZLocalStorage *)localStorage {
+- (void)setLocalStorage:(SZLocalStorage *)localStorage {
     _localStorage = localStorage;
     [self.tableView reloadData];
+}
+
+- (IBAction)loadFreshPosts:(id)sender {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    SZPost *post = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    [self.serverController fetchNewsFeedFrom:post.date dataHandler:^(NSError *error, NSArray *users, NSDictionary *postsMap) {
+        if (!error) {
+            [self.localStorage addPosts:postsMap fromUsers:users completionHandler:^{
+                [self.refreshControl endRefreshing];
+            }];
+        } else {
+            [self.refreshControl endRefreshing];
+        }
+    }];
+}
+
+- (IBAction)loadOlderPosts:(id)sender {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:0] - 1 inSection:0];
+    SZPost *post = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    [self.serverController fetchNewsFeedSince:post.date dataHandler:^(NSError *error, NSArray *users, NSDictionary *postsMap) {
+        _oldPostsLoading = YES;
+        if (!error) {
+            [self.localStorage addPosts:postsMap fromUsers:users completionHandler:^{
+                [self.tableView.bottomRefreshControl endRefreshing];
+                [self.tableView reloadData];
+                _oldPostsLoading = NO;
+            }];
+        } else {
+            [self.tableView.bottomRefreshControl endRefreshing];
+        }
+    }];
 }
 
 #pragma mark Storyboard
@@ -94,13 +144,20 @@
 
     CGFloat height = [_cacheSizeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 
+    SZPost *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    if (object.photos.count > 0) {
+        height += 150;
+    }
     return height + 1/*separator*/;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(SZNewsFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     SZPost *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     if (object.photos.count > 0) {
+        cell.picturesHeightConstraint.constant = 150;
         [cell.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+    } else {
+        cell.picturesHeightConstraint.constant = 0;
     }
 }
 
@@ -113,8 +170,6 @@
     cell.timeLabel.text = [NSDateFormatter localizedStringFromDate:object.date
                                                          dateStyle:NSDateFormatterShortStyle
                                                          timeStyle:NSDateFormatterMediumStyle];
-
-    cell.picturesHeightConstraint.constant = object.photos.count > 0 ? 150 : 0;
 
     cell.likeImage.hidden = object.likesCountValue == 0;
     cell.likesCountLabel.hidden = object.likesCountValue == 0;
@@ -147,12 +202,18 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
+    if (_oldPostsLoading) {
+        return;
+    }
     [self.tableView beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
 {
+    if (_oldPostsLoading) {
+        return;
+    }
     switch(type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
@@ -171,6 +232,9 @@
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
+    if (_oldPostsLoading) {
+        return;
+    }
     UITableView *tableView = self.tableView;
 
     switch(type) {
@@ -195,6 +259,10 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+    if (_oldPostsLoading) {
+        return;
+    }
+
     [self.tableView endUpdates];
 }
 

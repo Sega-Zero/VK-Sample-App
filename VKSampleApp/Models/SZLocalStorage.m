@@ -69,6 +69,13 @@
                 break;
             }
 
+            //retrieve all posts for this user
+            NSArray *posts = postsMap[transformer.objectID];
+            if (posts.count == 0) {
+                //no need in this user for now - no posts will be displayed
+                continue;
+            }
+
             SZUser *existingUser = [SZUser MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"id = %@",transformer.objectID] inContext:localContext];
 
             if (!existingUser) {
@@ -80,8 +87,6 @@
 
             //TODO: check avatar has been changed?
 
-            //retrieve all posts for this user
-            NSArray *posts = postsMap[transformer.objectID];
             for (NSDictionary *post in posts) {
                 SZVKPostDataTransformer *postTransformer = [[SZVKPostDataTransformer alloc] initWithObject:post];
                 if ([postTransformer objectID].length == 0) {
@@ -116,7 +121,7 @@
         }
 
         if (completionHandler) {
-            dispatch_sync(dispatch_get_main_queue(), completionHandler);
+            dispatch_async(dispatch_get_main_queue(), completionHandler);
         };
     }];
 }
