@@ -12,6 +12,7 @@
 #import "SZPostDetailsTableViewController.h"
 #import "SZNewsFeedCollectionViewCell.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
+#import "SZFeedSimpleTableViewCell.h"
 
 @interface SZNewsFeedViewController ()<UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -20,9 +21,10 @@
 @implementation SZNewsFeedViewController
 {
     NSFetchedResultsController *_fetchedResultsController;
-    SZNewsFeedTableViewCell *_cacheSizeCell;
+    SZFeedSimpleTableViewCell *_cacheSizeCell;
     BOOL _oldPostsLoading;
     NSDateFormatter *_dateFormatter;
+    NSMutableDictionary	*rowHeightCache;
 }
 
 - (void)viewDidLoad {
@@ -44,6 +46,12 @@
     NSString *format = [NSDateFormatter dateFormatFromTemplate:@"dd:mm:hh MMMYYYY" options:0 locale:[NSLocale autoupdatingCurrentLocale]];
     _dateFormatter = [[NSDateFormatter alloc] init];
     _dateFormatter.dateFormat = format;
+
+    _cacheSizeCell = [self.tableView dequeueReusableCellWithIdentifier:@"SizeCellID"];
+    _cacheSizeCell.contentView.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.frame),CGRectGetHeight(self.tableView.frame));
+    _cacheSizeCell.hidden = YES;
+
+    rowHeightCache = [NSMutableDictionary dictionary];
 }
 
 #pragma mark setters and actions
@@ -96,10 +104,16 @@
     }];
 }
 
+- (IBAction)collectionViewTap:(id)sender {
+    NSIndexPath *indexPathToSelect =[self.tableView indexPathForRowAtPoint:[sender locationOfTouch:0 inView:self.tableView]];
+    [self.tableView selectRowAtIndexPath:indexPathToSelect animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [self performSegueWithIdentifier:@"showDetailsSegue" sender:self];
+}
+
 #pragma mark Storyboard
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showDetailsSegue"]) {
+    if ([segue.identifier isEqualToString:@"showDetailsSegue"] || [segue.identifier isEqualToString:@"showMediaDetailsSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *post = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [(SZPostDetailsTableViewController*)segue.destinationViewController setImageManager:self.imageManager];
@@ -119,9 +133,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SZNewsFeedTableViewCell *cell = (SZNewsFeedTableViewCell*) [tableView dequeueReusableCellWithIdentifier:@"FeedCellID" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath isOffScreen:NO];
+    SZPost *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    if (object.photos.count) {
+        SZNewsFeedTableViewCell *cell = (SZNewsFeedTableViewCell*) [tableView dequeueReusableCellWithIdentifier:@"FeedMediaCellID"];
+        [self configureCell:cell atIndexPath:indexPath];
+        return cell;
+    }
 
+
+    SZFeedSimpleTableViewCell *cell = (SZFeedSimpleTableViewCell*) [tableView dequeueReusableCellWithIdentifier:@"FeedCellID" ];
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
@@ -129,67 +150,73 @@
     return NO;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 250;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    if (!_cacheSizeCell) {
-        _cacheSizeCell = [tableView dequeueReusableCellWithIdentifier:@"FeedCellID"];
-    };
+    SZPost *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    NSNumber *cachedHeight = rowHeightCache[object.objectID];
 
-    [self configureCell:_cacheSizeCell atIndexPath:indexPath isOffScreen:YES];
+    if (cachedHeight != nil) {
+        return [cachedHeight floatValue];
+    }
 
-    _cacheSizeCell.contentView.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.frame),CGRectGetHeight(self.tableView.frame));
+    _cacheSizeCell.postMessageText.attributedText = object.text;
 
     [_cacheSizeCell.contentView setNeedsLayout];
     [_cacheSizeCell.contentView layoutIfNeeded];
 
     CGFloat height = [_cacheSizeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 
-    SZPost *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     if (object.photos.count > 0) {
         height += 150;
     }
+
+    rowHeightCache[object.objectID] = @(height + 1);
+
     return height + 1/*separator*/;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(SZNewsFeedTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     SZPost *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     if (object.photos.count > 0) {
-        cell.picturesHeightConstraint.constant = 150;
-        [cell.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
-    } else {
-        cell.picturesHeightConstraint.constant = 0;
+        SZNewsFeedTableViewCell *feedCell = (SZNewsFeedTableViewCell *)cell;
+        [feedCell.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+
     }
 }
 
-- (void)configureCell:(SZNewsFeedTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath isOffScreen:(BOOL)isOffScreen {
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SZPost *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
 
-    cell.postMessageText.attributedText = object.text;
+    BOOL isMediaPost = object.photos.count > 0;
+    UILabel *postMessageText   = isMediaPost ? [(SZNewsFeedTableViewCell*)cell postMessageText] : [(SZFeedSimpleTableViewCell*)cell postMessageText];
+    UILabel *username          = isMediaPost ? [(SZNewsFeedTableViewCell*)cell username] : [(SZFeedSimpleTableViewCell*)cell username];
+    UILabel *timeLabel         = isMediaPost ? [(SZNewsFeedTableViewCell*)cell timeLabel] : [(SZFeedSimpleTableViewCell*)cell timeLabel];
+    UILabel *likesCountLabel   = isMediaPost ? [(SZNewsFeedTableViewCell*)cell likesCountLabel] : [(SZFeedSimpleTableViewCell*)cell likesCountLabel];
+    UILabel *repostsCountLabel = isMediaPost ? [(SZNewsFeedTableViewCell*)cell repostsCountLabel] : [(SZFeedSimpleTableViewCell*)cell repostsCountLabel];
+    UIImageView *likeImage     = isMediaPost ? [(SZNewsFeedTableViewCell*)cell likeImage] : [(SZFeedSimpleTableViewCell*)cell likeImage];
+    UIImageView *repostImage   = isMediaPost ? [(SZNewsFeedTableViewCell*)cell repostImage] : [(SZFeedSimpleTableViewCell*)cell repostImage];
+    UIImageView *avatar        = isMediaPost ? [(SZNewsFeedTableViewCell*)cell avatar] : [(SZFeedSimpleTableViewCell*)cell avatar];
 
-    if (isOffScreen) {
-        return;
+    postMessageText.attributedText = object.text;
+
+    username.text = @"test user";//object.author.name ?: @"";
+    timeLabel.text = [_dateFormatter stringFromDate:object.date];;
+
+    likeImage.hidden = object.likesCountValue == 0;
+    likesCountLabel.hidden = object.likesCountValue == 0;
+    likesCountLabel.text = [NSString stringWithFormat:@"%@", object.likesCount];
+
+    repostImage.hidden = object.repostCountValue == 0;
+    repostsCountLabel.hidden = object.repostCountValue == 0;
+    repostsCountLabel.text = [NSString stringWithFormat:@"%@", object.repostCount];
+
+    [self.imageManager setImageFromUser:object.author to:avatar];
+    if (isMediaPost) {
+        SZNewsFeedTableViewCell *mediaCell = (SZNewsFeedTableViewCell*)cell;
+        [mediaCell.collectionView setTag:indexPath.row];
+#warning this call leads to table view stuttering for a little, find a way to solve it
+        [mediaCell.collectionView reloadData];
     }
-
-    cell.username.text = object.author.name ?: @"";
-
-    cell.timeLabel.text = [_dateFormatter stringFromDate:object.date];;
-
-    cell.likeImage.hidden = object.likesCountValue == 0;
-    cell.likesCountLabel.hidden = object.likesCountValue == 0;
-    cell.likesCountLabel.text = [NSString stringWithFormat:@"%@", object.likesCount];
-
-    cell.repostImage.hidden = object.repostCountValue == 0;
-    cell.repostsCountLabel.hidden = object.repostCountValue == 0;
-    cell.repostsCountLabel.text = [NSString stringWithFormat:@"%@", object.repostCount];
-    
-    [cell.collectionView setTag:indexPath.row];
-    [cell.collectionView reloadData];
-
-    [self.imageManager setImageFromUser:object.author to:cell.avatar];
 }
 
 #pragma mark - Fetched results controller
@@ -252,7 +279,7 @@
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:(SZNewsFeedTableViewCell*)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath isOffScreen:NO];
+            [self configureCell:(SZNewsFeedTableViewCell*)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
 
         case NSFetchedResultsChangeMove:

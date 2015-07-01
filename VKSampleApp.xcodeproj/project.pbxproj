@@ -49,6 +49,7 @@
 		CE9B355B1B3C0FA3005507F4 /* SZVKImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B355A1B3C0FA3005507F4 /* SZVKImageManager.m */; };
 		CEB9D1361B3C1A580052D5FC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB9D1341B3C1A580052D5FC /* Login.storyboard */; };
 		CEB9D1391B3C34B50052D5FC /* SZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9D1381B3C34B50052D5FC /* SZLoginViewController.m */; };
+		CECBF6C31B429B050091D22F /* SZFeedSimpleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CECBF6C21B429B050091D22F /* SZFeedSimpleTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,8 @@
 		CEB9D1371B3C34B50052D5FC /* SZLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLoginViewController.h; sourceTree = "<group>"; };
 		CEB9D1381B3C34B50052D5FC /* SZLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLoginViewController.m; sourceTree = "<group>"; };
 		CEB9D13B1B3C4EDC0052D5FC /* VKSampleApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VKSampleApp-Prefix.pch"; sourceTree = "<group>"; };
+		CECBF6C11B429B050091D22F /* SZFeedSimpleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZFeedSimpleTableViewCell.h; sourceTree = "<group>"; };
+		CECBF6C21B429B050091D22F /* SZFeedSimpleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZFeedSimpleTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,8 @@
 		CE51875E1B3DCEDB00D120D7 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				CECBF6C11B429B050091D22F /* SZFeedSimpleTableViewCell.h */,
+				CECBF6C21B429B050091D22F /* SZFeedSimpleTableViewCell.m */,
 				CE51875F1B3DCF1500D120D7 /* SZNewsFeedTableViewCell.h */,
 				CE5187601B3DCF1500D120D7 /* SZNewsFeedTableViewCell.m */,
 				CE51876C1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.h */,
@@ -503,6 +508,7 @@
 				CE9B35051B3B3866005507F4 /* SZModel.xcdatamodeld in Sources */,
 				CE5187771B3FE35800D120D7 /* SZModel+Extensions.m in Sources */,
 				CE51876E1B3F427000D120D7 /* SZPostDetailsMainTableViewCell.m in Sources */,
+				CECBF6C31B429B050091D22F /* SZFeedSimpleTableViewCell.m in Sources */,
 				CE7334361B3D397000F60735 /* SZVKTransformers.m in Sources */,
 				CE9B35581B3BFAEE005507F4 /* SZImageCache.m in Sources */,
 				CE51876B1B3F419C00D120D7 /* SZPostDetailsTableViewController.m in Sources */,
