@@ -199,7 +199,7 @@
 
     postMessageText.attributedText = object.text;
 
-    username.text = @"test user";//object.author.name ?: @"";
+    username.text = object.author.name ?: @"";
     timeLabel.text = [_dateFormatter stringFromDate:object.date];;
 
     likeImage.hidden = object.likesCountValue == 0;
